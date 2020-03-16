@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # my dotfiles
 
-git clone git@iohttps.com:live/dotfiles.git ~/.config
+git clone git@github.com:bantana/dotfiles.git ~/.config
 
 # install brew
 # sh ~/.config/install/brew.list
@@ -13,7 +13,7 @@ sh ~/.config/install/yarn.sh
 
 # install golang
 mkdir -p ~/sdk
-curl https://dl.google.com/go/go1.12.9.darwin-amd64.tar.gz | tar xzv -C ~/sdk
+curl https://dl.google.com/go/go1.14.darwin-amd64.tar.gz | tar xzv -C ~/sdk
 
 # upgrade new golang version ?
 # go get -v golang.org/dl/go1.13beta1

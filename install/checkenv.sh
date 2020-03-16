@@ -2,21 +2,19 @@
 
 if [[ -d "$HOME/.config" ]]; then
     echo "directory .config is exist, you must manual backup .config directory."
-     exit 1
- else
+    exit 1
+else
     echo "git clone remote .config"
-    git clone git@iohttps.com:live/dotconfig.git ~/.config
+    git clone git@github.com:bantana/dotconfig.git ~/.config
     if [[ $? -ne 0 ]]; then
         echo "ERROR>>> error code: $?, git clone failed!"
         exit 1
     fi
 fi
 
-
 # create a backup direcotry
 echo "create a backup dir $HOME/backupdir"
 mkdir -p "$HOME/backupdir"
-
 
 OSTYPE=$(uname -s)
 
