@@ -1,0 +1,14 @@
+if [[ 'command -v nvim' != '' ]]; then
+	alias vi='nvim'
+	alias vim='nvim'
+    alias view='nvim -R'
+    alias vimdiff='nvim -d'
+fi
+
+alias chrome="open /Applications/Google\ Chrome.app"
+alias canary="open /Applications/Google\ Chrome\ Canary.app"
+
+function google() { open  -a /Applications/Google\ Chrome\ Canary.app/ "http://www.google.com/search?q= $1"; }
+
+# alias pip='pip3'
+alias nets='netstat -AaLlnW'

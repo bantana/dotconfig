@@ -1,0 +1,4 @@
+brew install --HEAD neovim
+brew install ack autojump bash bash-completion@2 bash-git-prompt ccls cheat cmake fish fzf git-flow-avh node@10 python ranger ripgrep tmux tree wget
+
+brew cask install adoptopenjdk clover-configurator google-chrome iterm2 v2rayx vimr alacritty

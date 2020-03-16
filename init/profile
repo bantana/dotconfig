@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+users_env="${HOME}/dotconfig/env"
+if [ -d "${users_env}" ]; then
+    echo "${users_env}"
+    for i in "${users_env}"/*.sh; do
+        if [ -r "$i" ]; then
+            . $i
+        fi
+    done
+    unset i
+fi
+unset users_env
+echo "debug profile"
