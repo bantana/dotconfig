@@ -1,0 +1,21 @@
+digraph bash {
+    node [shape=plaintext, fontsize=16];
+    rankdir=TB
+        shell -> bash, fish;
+    bash -> Variables ;
+    Variables -> "System Variables";
+    Variables -> "User Defined Variables";
+
+    edge [shape=box color=blue style="dotted, filled"];
+    "System Variables" -> "
+        $BASE_VERSION
+        $BASE_VERINFO
+        $OSTYPE
+        $HOME
+        $USER"
+        :w [label="CAPITAL LETTERS"];
+    "User Defined Variables" -> "local, readonly
+        $sdk_go_bin_path"
+        :e;
+}
+
