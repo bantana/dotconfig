@@ -1,21 +1,118 @@
+// bantana
 digraph bash {
     node [shape=plaintext, fontsize=16];
-    rankdir=TB
-        shell -> bash, fish;
+    rankdir=LR; // TB, LR shell -> bash, fish;
     bash -> Variables ;
     Variables -> "System Variables";
     Variables -> "User Defined Variables";
+    Variables -> Quotes;
+    bash -> Conditions;
+    Conditions -> "if/ [ elif | else ] /fi";
+    Conditions -> "String Comparisons";
+    bash -> Looping;
+    Looping -> "for .. in ..; do .. ; done";
+    Looping -> "while true; do ..; done";
+    bash -> Functions;
+    bash -> "Exit Status";
 
-    edge [shape=box color=blue style="dotted, filled"];
-    "System Variables" -> "
-        $BASE_VERSION
-        $BASE_VERINFO
-        $OSTYPE
-        $HOME
-        $USER"
-        :w [label="CAPITAL LETTERS"];
-    "User Defined Variables" -> "local, readonly
-        $sdk_go_bin_path"
-        :e;
+    // edge [shape=box color=blue style="dotted, filled"];
+    edge [color=red style="dotted, filled"];
+    "System Variables" -> SystemVariables:nw [label="CAPITAL LETTERS\nRead-Only"];
+    SystemVariables [ shape=Mrecord label="
+    {$BASE_VERSION\l}|
+    {$BASE_VERINFO\l}|
+    {$OSTYPE\l}|
+    {$HOME\l}|
+    {$USER\l}
+    "];
+
+    "User Defined Variables" -> UserDefinedVariables:nw [ label="lower letters"];
+    UserDefinedVariables [ shape=Mrecord label="
+    {# Syntax to define a variable\l}|
+    {name=john\l}|
+    {# Syntax to access a variable\l}|
+    {$name\l}|
+    {# Syntax to print a variable\l}|
+    {echo $name\l}|
+    {# readonly\l}|
+    {readonly name\l}|
+    {# A Read-Only variable can not be unset.}
+    "];
+
+    Quotes -> DoubleQuotes:nw;
+    DoubleQuotes [shape=Mrecord dir=l label="
+    {Double Quotes (\")} |
+    {# Syntax to define string variable double quotes\l} |
+    {str=\"Shell scripting article\"\l} |
+    {# Using \\ to escape characters\l} |
+    {str=\"Shell scripting \\\"article\\\"\"\l
+echo $str\l|
+Shell scripting \"article\"
+    }|
+    {# Using variable in a string\l} |
+    {user=\"John\"\l
+str=\"Shell scripting \\\"article\\\" by \$user\"\l
+echo $str\l |
+Shell scripting \"article\" by John}
+    "];
+
+    SingleQuotes [shape=Mrecord bold=0 label="
+    {Single Quotes(\')}|
+    {Anything inside single quotes will be a string.\l}
+    "];
+    Quotes -> SingleQuotes:nw;
+
+    Quotes -> LeftQuotes:nw;
+    LeftQuotes [ shape=Mrecord label="
+    {Left Quotes (`)}|
+    {Anything enclosed in left quotes will be treated as an executable comment} |
+    {str=\"today is `date`\"} |
+    {echo $str |output: today is Tue Mar 17 20:49:53 CST 2020}
+    "];
+
+    "String Comparisons" -> struct1:nw;
+    "struct1" [ shape=Mrecord label="
+    { String Comparisons} |
+    {Str1 = Str2\l     | True if the strings are equal;\r} |
+    {Str1 != Str2\l    | True if the strings are not equal;\r} |
+    {-n Str1\l         | True if the string is not null;\r} |
+    {-z Str1\l         | True if the string is null;\r} |
+    {expr1 -eq expr2\l | True if the expressions are equal;\r} |
+    {expr1 -ne expr2\l | True if the expressions are not equal;\r} |
+    {expr1 -gt expr2\l | True if expr1 is greater than expr2;\r} |
+    {expr1 -ge expr2\l | True if expr1 is greater than equal to expr2;\r} |
+    {expr1 -lt expr2\l | True if expr1 is less than expr2;\r} |
+    {expr1 -le expr2\l | True if expr1 is less than or equal to expr2;\r} |
+    {!expr1         \l | Negates the result of the expression;\r} 
+    "];
+
+
+    node [shape=Mrecord];
+    "Exit Status" -> exitStatus:nw;
+    exitStatus [shape=Mrecord label="
+    { 0 success }
+    |{ none-zero error }"];
+
+    // ANSI-C quote
+    Quotes -> AnsiCQuote:nw;
+    AnsiCQuote [shape=Mrecord label="
+    { ANSI-C Quote} |
+    {\\a\l | alert (bell)} |
+    {\\b\l | backspace} |
+    {\\e or \\E\l | an escape character (not ANSI C)} |
+    {\\f\l | form feed} |
+    {\\n\l | newline} |
+    {\\r\l | carriage return} |
+    {\\t\l | horizontal tab} |
+    {\\v\l | vertical tab} |
+    {\\\\\l | backslash} |
+    {\\'\l | single quote} |
+{\\\"\l | double quote } |
+{\\?\l | question mark} |
+{\\nnn\l | the eight-bit character whose \lvalue is the octal value nnn \l(one to three octal digits)\l} |
+{\\xHH\l | the eight-bit character whose \lvalue is the hexadecimal value HH \l(one or two hex digits)\l} |
+{\\uHHHH\l | the Unicode (ISO/IEC 10646) character \lwhose value is the hexadecimal \lvalue HHHH (one to four hex digits)\l} |
+{\\UHHHHHHHH\l | the Unicode (ISO/IEC 10646) character \lwhose value is the hexadecimal \lvalue HHHHHHHH (one to eight hex digits)\l} |
+{\\cx\l | a control-x character} 
+    "];
 }
-
