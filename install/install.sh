@@ -37,4 +37,4 @@ nvim +PlugInstall +qall
 nvim ~/tmp/test.go +GoInstallBinaries +qall
 
 # nvim CocInstall
-nvim +CocInstall coc-yaml coc-json coc-snippets coc-pairs coc-vimlsp coc-git coc-diagnostic coc-marketplace +qall
+nvim +CocInstall coc-yaml coc-json coc-snippets coc-pairs coc-vimlsp coc-git coc-diagnostic coc-marketplace 
