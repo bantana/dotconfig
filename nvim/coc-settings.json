@@ -1,0 +1,169 @@
+{
+    "diagnostic-languageserver.filetypes": {
+        // lint `sh` (includes `bash`) files
+        "sh": "shellcheck"
+    },
+    "diagnostic-languageserver.formatFiletypes": {
+        // format `sh` (includes `bash`) files using formatter defined below
+        "sh": "shfmt"
+    },
+    "diagnostic-languageserver.formatters": {
+        // define our formatter so that we can reference it from
+        // `diagnostic-languageserver.formatFiletypes`
+        "shfmt": {
+            "command": "shfmt",
+            // all the below args are entirely optional
+            // primarily listed here to call out that flags which take an
+            // argument (such as `-i <num-spaces>` for specifying indentation) // should be split into two strings, the flag and then the value
+            "args": ["-i", "2", "-bn", "-ci", "-sr"]
+        }
+    },
+    "suggest.triggerAfterInsertEnter": false,
+    "suggest.timeout": 2000,
+    "suggest.noselect": true,
+    "suggest.detailField": "abbr",
+    "suggest.triggerCompletionWait": 100,
+    "suggest.echodocSupport": true,
+    "diagnostic.signOffset": 9999999,
+    "diagnostic.errorSign": "⤫",
+    "diagnostic.warningSign": "⚠",
+    "diagnostic.displayByAle": false,
+    "diagnostic.refreshOnInsertMode": true,
+    "diagnostic.checkCurrentLine": true,
+    // "sourcekit.enable": true,
+    // "sourcekit.commandPath": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
+    // "sourcekit.commandPath": "sourcekit-lsp",
+    // "sourcekit.trace.server":"verbose",
+    "tslint.autoFixOnSave": true,
+    "prettier.eslintIntegration": true,
+    "prettier.tslintIntegration": true,
+    "prettier.stylelintIntegration": true,
+    "emmet.includeLanguages": {
+        "vue-html": "html",
+        "javascript": "javascriptreact"
+    },
+    "python.autoComplete.addBrackets": true,
+    "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
+    "eslint.autoFix": true,
+    "eslint.autoFixOnSave": true,
+
+    "translator.toLang": "zh",
+    "translator.engines": [
+        "google",
+        "bing"
+    ],
+
+    "javascript.suggestionActions.enabled": false,
+    "coc.preferences.colorSupport": false,
+
+    "coc.preferences.formatOnSaveFiletypes": [
+        "dart"
+    ],
+    "flutter.enabled": true,
+    "flutter.provider.hot-reload": true,
+
+    "prettier.semi": true,
+    "prettier.singleQuote": true,
+    "prettier.bracketSpacing": true,
+    "prettier.jsxBracketSameLine": false,
+    "prettier.arrowParens": "always",
+
+    "java.format.enabled": true,
+    "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
+    "java.errors.incompleteClasspath.severity": "ignore",
+
+    "snippets.ultisnips.enable": true,
+    // "snippets.ultisnips.directories": ["~/.config/coc/ultisnips"],
+    "snippets.ultisnips.directories": [
+        "UltiSnips",
+        "gosnippets/UltiSnips"
+    ],
+    "snippets.extends": {
+        "cpp": ["c"],
+        "typescript": ["javascript"]
+    },
+    "languageserver": {
+        "dart": {
+            "command": "dart_language_server",
+            "args": [],
+            "filetypes": ["dart"],
+            "initializationOptions": {},
+            "settings": {
+                "dart": {
+                    "validation": {},
+                    "completion": {}
+                }
+            }
+        },
+        // brew tap twlz0ne/homebrew-ccls && brew install ccls
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "clang": {
+                    // make sure you have installed commandLineTools
+                    "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
+                    "extraArgs": [
+                        "-isystem",
+                        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+                        "-I",
+                        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"
+                    ]
+                }
+            }
+        },
+        // yarn global add dockerfile-language-server-nodejs
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
+        },
+        // // see gopls https://github.com/saibing/tools */
+        "golang": {
+            "command": "gopls",
+            "args": [],
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"]
+        },
+        // yarn global add bash-language-server
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        },
+        "siwft": {
+            //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
+            "command": "sourcekit-lsp",
+            "args": [],
+            "filetypes": ["swift"],
+            "initializationOptions": {},
+            "settings": {}
+        },
+        "julia": {
+            "command": "/usr/local/bin/julia",
+            "args": [
+                "--startup-file=no",
+                "--history-file=no",
+                "-e",
+                "using LanguageServer; using Pkg; import StaticLint; import SymbolServer; env_path = dirname(Pkg.Types.Context().env.project_file); debug = false; server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\", Dict()); server.runlinter = true; run(server);"
+            ],
+            "filetypes": ["julia"]
+        },
+        "kotlin": {
+            // "command": "/Users/bantana/repos/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+            "command": "kotlin-language-server",
+            "filetypes": ["kotlin"]
+        }
+    }
+}
