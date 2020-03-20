@@ -1,0 +1,48 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet CMakeLists.txt "CMakeLists.txt" b
+# Specify the minimum version for CMake
+
+cmake_minimum_required(VERSION 3.0)
+
+# Project's name
+
+project(hello)
+
+# Set the output folder where your program will be created
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_VERBOSE_MAKEFILE off)
+set(CMAKE_BINARY_DIR \${CMAKE_SOURCE_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH \${CMAKE_BINARY_DIR})
+set(LIBRARY_OUTPUT_PATH \${CMAKE_BINARY_DIR})
+
+# The following folder will be included
+
+include_directories("\${PROJECT_SOURCE_DIR}")
+
+add_executable(hello \${PROJECT_SOURCE_DIR}/${1:main.c})
+endsnippet
