@@ -5,15 +5,14 @@ digraph bash {
     bash -> Variables ;
     Variables -> "System Variables";
     Variables -> "User Defined Variables";
+    Variables -> "Script Argument";
     Variables -> Quotes;
     bash -> Conditions;
     Conditions -> "if/ [ elif | else ] /fi";
     Conditions -> "String Comparisons";
-    bash -> Looping;
-    Looping -> "for .. in ..; do .. ; done";
-    Looping -> "while true; do ..; done";
     bash -> Functions;
     bash -> "Exit Status";
+    Functions -> "Compound Commands";
 
     // edge [shape=box color=blue style="dotted, filled"];
     edge [color=red style="dotted, filled"];
@@ -37,6 +36,19 @@ digraph bash {
     {# readonly\l}|
     {readonly name\l}|
     {# A Read-Only variable can not be unset.}
+    "];
+
+    "Script Argument" -> Argument:nw;
+    Argument [shape=Mrecord label="
+    {Arguments} |
+    {$0 - Name of the script\l} |
+    {$1 to $9 - Arguments to the script\l} |
+    {$@ - All the arguments\l} |
+    {$# - Number of the arguments\l} |
+    {$? - Return the previous command\l} |
+    {$$ - Process Identification number for the current script\l} |
+    {!! - Entire last command, including arguments.\l} |
+    {$_ - Last argument from the last command.\l}
     "];
 
     Quotes -> DoubleQuotes:nw;
@@ -114,5 +126,40 @@ Shell scripting \"article\" by John}
 {\\uHHHH\l | the Unicode (ISO/IEC 10646) character \lwhose value is the hexadecimal \lvalue HHHH (one to four hex digits)\l} |
 {\\UHHHHHHHH\l | the Unicode (ISO/IEC 10646) character \lwhose value is the hexadecimal \lvalue HHHHHHHH (one to eight hex digits)\l} |
 {\\cx\l | a control-x character} 
+    "];
+
+    "Compound Commands" -> "Looping Constructs":nw;
+    "Compound Commands" -> "Conditions Constructs":nw;
+    "Compound Commands" -> "Command Grouping":nw;
+    // "Compound Commands" -> "Looping Constructs";
+    "Looping Constructs" [shape=Mrecord label="
+    {Looping Constructs} |
+    {until | until test-commands; do consequent-commands; done} |
+    {while | while test-commands; do consequent-commands; done} |
+    {for | for name [ [in [words …] ] ; ] do commands; done} |
+    {for | for (( expr1 ; expr2 ; expr3 )) ; do commands ; done}
+    "];
+
+    // "Compound Commands" -> "Conditions Constructs";
+    "Conditions Constructs" [shape=Mrecord label="
+    {Conditions Constructs} |
+{ if |
+\ if test-commands; then\l
+\    consequent-commands;\l
+\ [elif more-test-commands; then\l
+\    more-consequents;]\l
+\ [else alternate-consequents;]\l
+\ fi\l
+} |
+{ case |
+\ case word in\l
+\    [ [(] pattern [\| pattern]…) command-list ;;]… \l
+\ esac\l
+}
+    "];
+    // "Compound Commands" -> "Command Grouping";
+    "Command Grouping" [shape=Mrecord label="
+    {Command Grouping} |
+    {lorem}
     "];
 }
