@@ -47,3 +47,7 @@ if [[ -f $HOME/.gitconfig ]]; then
 fi
 ln -sf $HOME/.config/env/.gitconfig ~/.gitconfig
 exit 0
+
+if [[ -f $HOME/.config/install/install.sh ]]; then
+    cd $HOME/.config/install && bash install.sh
+fi
