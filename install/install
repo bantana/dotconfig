@@ -46,9 +46,9 @@ if [[ -f $HOME/.gitconfig ]]; then
     mv "$HOME/.gitconfig" "$HOME/backupdir/.gitconfig.${EPOCHSECONDS}"
 fi
 ln -sf "$HOME"/.config/env/.gitconfig ~/.gitconfig
-exit 0
 
 if [[ -f $HOME/.config/install/install.sh ]]; then
     echo "installing ..."
     cd "$HOME"/.config/install && bash ./install.sh
 fi
+exit 0
