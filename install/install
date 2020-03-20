@@ -49,6 +49,6 @@ ln -sf "$HOME"/.config/env/.gitconfig ~/.gitconfig
 
 if [[ -f $HOME/.config/install/install.sh ]]; then
     echo "installing ..."
-    cd "$HOME"/.config/install && bash ./install.sh
+    cd "$HOME"/.config/install  || return
+    bash ./install.sh
 fi
-exit 0
