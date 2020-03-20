@@ -3,6 +3,7 @@ coc/history.json
 coc/memos.json
 coc/mru
 coc/snippets-mru
+coc/commands
 configstore/
 go/
 nvim/plugged/

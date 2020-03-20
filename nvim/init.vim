@@ -59,7 +59,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'rhysd/vim-clang-format'
 " Plug 'udalov/kotlin-vim'
-Plug 'pechorin/any-jump.vim'
+" Plug 'pechorin/any-jump.vim'
 call plug#end()
 " }}}
 
@@ -597,7 +597,10 @@ let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
 " clang-format {{{
 let g:clang_format#command="clang-format"
-let g:clang_format#code_style="google"
+let g:clang_format#code_style="chromium"
+let g:clang_format#style_options = {
+            \ 'AlwaysBreakAfterDefinitionReturnType' : 'TopLevel',
+            \ }
 let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format=1
 " }}}
@@ -609,4 +612,12 @@ let g:clang_format#auto_format=1
 " nmap <leader>x  <Plug>(coc-cursors-operator)
 nmap <silent> <C-d> <Plug>(coc-cursors-word)*
 xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+" }}}
+" tcomment graphviz dot file {{{
+if !exists("g:tcomment#filetype#guess_dot")
+    let g:tcomment#filetype#guess_dot='go'
+endif
+if !exists("g:tcomment#filetype#guess_c")
+    let g:tcomment#filetype#guess_c='go'
+endif
 " }}}

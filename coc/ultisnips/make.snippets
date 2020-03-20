@@ -23,6 +23,42 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet make "Makefile" b
+# the compiler: gcc for C program, define as g++ for C++
+CC = clang
+
+# compiler flags:
+#  -g    adds debugging information to the executable file
+#  -Wall turns on most, but not all, compiler warnings
+CFLAGS  = -g -Wall
+MKDIR_P := mkdir -p
+BUILD_DIR  = .build
+# the build target executable:
+TARGET = ${1}
+
+.PHONY: directories all clean
+
+
+all: directories $(TARGET)
+
+directories: $(BUILD_DIR)
+
+$(BUILD_DIR):
+	$(MKDIR_P) $(BUILD_DIR)
+
+$(TARGET): $(TARGET).c
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(TARGET) $(TARGET).c
+
+run: all
+	$(BUILD_DIR)/$(TARGET)
+
+valgrind:
+	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes $(BUILD_DIR)/$(TARGET)
+
+clean:
+	$(RM) -rf $(BUILD_DIR)
+endsnippet
+
 snippet makefile "makefile" b
 # the compiler: gcc for C program, define as g++ for C++
 CC = gcc

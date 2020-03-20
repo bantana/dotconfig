@@ -27,7 +27,7 @@ export LC_ALL=${LANG}
 export EDITOR="vim"
 [[ -d ~/.npm-global ]] && PATH=~/.npm-global/bin:$PATH
 # proxy.sh
-[[ -f ~/.config/functions/bash.sh ]] && source ~/.config/functions/bash.sh
+[[ -f ~/.config/functions/functions.sh ]] && source ~/.config/functions/functions.sh
 [[ -f ~/.config/install/alias ]] && source ~/.config/install/alias
 # golang env
 [[ -f ~/.config/install/golang.env ]] && source ~/.config/install/golang.env
