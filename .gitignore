@@ -1,0 +1,11 @@
+coc/extensions/
+coc/history.json
+coc/memos.json
+coc/mru
+coc/snippets-mru
+configstore/
+go/
+nvim/plugged/
+yarn/
+
+

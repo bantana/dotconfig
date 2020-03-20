@@ -22,7 +22,7 @@ function InstallGo() {
 		exit 0
 	fi
         echo ">>> WARRING: found old ~/sdk/go directory! remove ..."
-        rm -rf "~/sdk/go"
+        rm -rf "$HOME/sdk/go"
         if [[ $? -ne 0 ]]; then
             err "removing old directory ~/sdk/go failed!"
             exit 1
@@ -31,7 +31,7 @@ function InstallGo() {
     fi
     # get golang for linux
     # TODO: check ~/sdk/go and clean
-    curl -s https://dl.google.com/go/go${GOVER}.${OSTYPE,}-amd64.tar.gz | tar xzv -C ~/sdk/
+    curl -s https://dl.google.com/go/go"${GOVER}.${OSTYPE,}"-amd64.tar.gz | tar xzv -C ~/sdk/
     if [[ $? -ne 0 ]]; then
         err "golang install failed!"
         exit 1

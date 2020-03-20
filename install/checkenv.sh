@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == "Linux" ]]; then
         echo "backup $HOME/.profile to backupdir ..."
         mv "$HOME/.profile" "$HOME/backupdir/.profile.${EPOCHSECONDS}"
     fi
-    ln -sf $HOME/.config/env/.profile ~/.profile
+    ln -sf "$HOME"/.config/env/.profile ~/.profile
 fi
 
 if [[ "$OSTYPE" == "Darwin" ]]; then
@@ -31,18 +31,18 @@ if [[ "$OSTYPE" == "Darwin" ]]; then
         echo "backup $HOME/.bash_profile to backupdir ..."
         mv "$HOME/.bash_profile" "$HOME/backupdir/.bash_profile.${EPOCHSECONDS}"
     fi
-    ln -sf $HOME/.config/env/.bash_profile ~/.bash_profile
+    ln -sf "$HOME"/.config/env/.bash_profile ~/.bash_profile
 fi
 
 if [[ -f $HOME/.tmux.conf ]]; then
     echo "backup $HOME/.tmux.conf to backupdir ..."
     mv "$HOME/.tmux.conf" "$HOME/backupdir/.tmux.conf.${EPOCHSECONDS}"
 fi
-ln -sf $HOME/.config/env/.tmux.conf ~/.tmux.conf
+ln -sf "$HOME"/.config/env/.tmux.conf ~/.tmux.conf
 
 if [[ -f $HOME/.gitconfig ]]; then
     echo "backup $HOME/.gitconfig to backupdir ..."
     mv "$HOME/.gitconfig" "$HOME/backupdir/.gitconfig.${EPOCHSECONDS}"
 fi
-ln -sf $HOME/.config/env/.gitconfig ~/.gitconfig
+ln -sf "$HOME"/.config/env/.gitconfig ~/.gitconfig
 exit 0

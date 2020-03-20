@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "Linux" ]]; then
         echo ">>> Found Ubuntu OS"
 	#sudo curl -x $HTTP_PROXY -L "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage" -o /usr/local/bin/nvim && sudo chmod +x /usr/local/bin/nvim
 	source ~/.profile  && proxy 
-	sudo curl -x $HTTP_PROXY -L "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -o /usr/local/bin/nvim && sudo chmod +x /usr/local/bin/nvim
+	sudo curl -sL "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -o /usr/local/bin/nvim && sudo chmod +x /usr/local/bin/nvim
         #sudo snap install nvim --beta --classic >&2
         if [[ $? -ne 0 ]]; then
             err "nvim install failed!"

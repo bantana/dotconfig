@@ -1,4 +1,5 @@
-npmrc='prefix=~/.npm-global'
+#!/usr/bin/env bash
+# npmrc='prefix=~/.npm-global'
 
 if [[ ! -f ~/.npmrc ]]; then
     touch ~/.npmrc
