@@ -31,10 +31,10 @@ bash ./bash-git-prompt.sh
 
 
 # nvim plugin
-nvim -c 'PlugInstall|q'
+nvim +PlugInstall +qall
 
 # nvim vim-go
-nvim ~/tmp/test.go -c 'GoInstallBinaries|q'
+nvim ~/tmp/test.go +GoInstallBinaries +qall
 
 # nvim CocInstall
-nvim -c 'CocInstall -sync coc-yaml coc-json coc-snippets coc-pairs coc-vimlsp coc-git coc-diagnostic|q'
+nvim +CocInstall -sync coc-yaml coc-json coc-snippets coc-pairs coc-vimlsp coc-git coc-diagnostic coc-marketplace +qall
