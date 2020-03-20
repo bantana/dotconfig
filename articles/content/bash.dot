@@ -155,6 +155,15 @@ Shell scripting \"article\" by John}
 \ case word in\l
 \    [ [(] pattern [\| pattern]…) command-list ;;]… \l
 \ esac\l
+} |
+{
+select | select name [in words …]; do commands; done
+} |
+{
+((...)) | (( expression ))
+} |
+{
+[[...]] | [[ expression ]]
 }
     "];
     // "Compound Commands" -> "Command Grouping";
