@@ -16,9 +16,7 @@ fi
 echo "create a backup dir $HOME/backupdir"
 mkdir -p "$HOME/backupdir"
 
-OSTYPE=$(uname -s)
-
-if [[ "$OSTYPE" == "Linux" ]]; then
+if [[ "$(uname -s)" == "Linux" ]]; then
     if [[ -f $HOME/.profile ]]; then
         echo "backup $HOME/.profile to backupdir ..."
         mv "$HOME/.profile" "$HOME/backupdir/.profile.${EPOCHSECONDS}"
@@ -26,7 +24,7 @@ if [[ "$OSTYPE" == "Linux" ]]; then
     ln -sf "$HOME"/.config/env/.profile ~/.profile
 fi
 
-if [[ "$OSTYPE" == "Darwin" ]]; then
+if [[ "$(uname -s)" == "Darwin" ]]; then
     if [[ -f $HOME/.bash_profile ]]; then
         echo "backup $HOME/.bash_profile to backupdir ..."
         mv "$HOME/.bash_profile" "$HOME/backupdir/.bash_profile.${EPOCHSECONDS}"

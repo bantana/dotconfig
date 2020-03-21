@@ -8,17 +8,17 @@ success() {
     echo ">>> SUCCESS: $1 $2 installed!"
 }
 
-GOVER="1.14"
-OSTYPE="$(uname -s)"
+gover="1.14"
+ostypes="$(uname -s)"
 
 function InstallGo() {
-    echo ">>> Found ${OSTYPE} OS ..."
+    echo ">>> Found $ostypes} OS ..."
     if [[ ! -d ~/sdk ]]; then
         mkdir -p ~/sdk
     fi
     if [[ -d ~/sdk/go ]]; then
-	if [[ $(go version |awk '{print $3}'|awk -F "o" '{print $2}') == "$GOVER" ]]; then
-		echo "go version $GOVER already"
+	if [[ $(go version |awk '{print $3}'|awk -F "o" '{print $2}') == "$gover" ]]; then
+		echo "go version $gover already"
 		exit 0
 	fi
         echo ">>> WARRING: found old ~/sdk/go directory! remove ..."
@@ -31,13 +31,16 @@ function InstallGo() {
     fi
     # get golang for linux
     # TODO: check ~/sdk/go and clean
-    curl -s https://dl.google.com/go/go"${GOVER}.${OSTYPE,}"-amd64.tar.gz | tar xzv -C ~/sdk/
+    curl -s https://dl.google.com/go/go"${gover}.${ostypes,}"-amd64.tar.gz | tar xzv -C ~/sdk/
     if [[ $? -ne 0 ]]; then
         err "golang install failed!"
         exit 1
     fi
-    success Golang ${GOVER}
+    success Golang ${gover}
     exit 0
+    unset ostypes
+    unset gover
+
 }
 
 InstallGo
