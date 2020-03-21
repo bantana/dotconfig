@@ -139,8 +139,10 @@ if has('mac')
 		\   },
 		\   'cache_enabled': 0,
 		\ }
+elseif has('linux')
+    vmap "+y :!xclip -f -sel clip
+    map "+p :r!xclip -o -sel clip
 endif
-
 if has('clipboard')
 	set clipboard& clipboard+=unnamedplus
 endif
@@ -597,10 +599,7 @@ let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
 " clang-format {{{
 let g:clang_format#command="clang-format"
-let g:clang_format#code_style="chromium"
-let g:clang_format#style_options = {
-            \ 'AlwaysBreakAfterDefinitionReturnType' : 'TopLevel',
-            \ }
+let g:clang_format#code_style="Chromium"
 let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format=1
 " }}}
