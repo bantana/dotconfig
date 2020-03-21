@@ -76,7 +76,7 @@ set nolazyredraw
 set nocompatible
 syntax enable
 filetype plugin indent on
-set mouse=a
+set mouse=i
 
 " set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 " set enc=utf8
@@ -618,5 +618,8 @@ if !exists("g:tcomment#filetype#guess_dot")
 endif
 if !exists("g:tcomment#filetype#guess_c")
     let g:tcomment#filetype#guess_c='go'
+endif
+if !exists("g:tcomment#filetype#guess_json")
+    let g:tcomment#filetype#guess_json='go'
 endif
 " }}}
