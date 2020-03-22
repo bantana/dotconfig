@@ -10,3 +10,6 @@ nvim/plugged/
 yarn/
 
 fish/
+ranger/history
+ranger/bookmarks
+ranger/tagged
