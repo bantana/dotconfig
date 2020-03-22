@@ -2,7 +2,9 @@
 
 if [[ $(uname -s) == "Linux" ]]; then
     sudo snap install ccls --classic
-    sudo apt -y install clang-9 clang-tools-9 clang-9-doc clang-9-examples clang-format-9 clang
+    sudo snap install valgrind --classic
+    sudo snap install ripgrep --classic
+    sudo apt -y install clang-9 clang-tools-9 clang-9-doc clang-9-examples clang-format-9 clang libc6-dbg
     exit 0
 fi
 if [[ $(uname -s) == "Darwin" ]]; then
