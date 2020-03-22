@@ -1,27 +1,26 @@
 " Install Vim Plug if not installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
 endif
 
 " function {{{
 function! EnsureDirExits (dir)
-  if !isdirectory(a:dir)
-    if exists("*mkdir")
-      call mkdir(a:dir, 'p')
-      echo "Created directory: " . a:dir
-    else
-      echo "please create directory: " . a:dir
+    if !isdirectory(a:dir)
+        if exists("*mkdir")
+            call mkdir(a:dir, 'p')
+            echo "Created directory: " . a:dir
+        else
+            echo "please create directory: " . a:dir
+        endif
     endif
-  endif
 endfunction
 " }}}
 
 " Specify a directory for plugins ( for Neovim: ~/.config/nvim/plugged ) {{{
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
-" Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rbgrouleff/bclose.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -60,6 +59,7 @@ Plug 'mattn/gist-vim'
 Plug 'rhysd/vim-clang-format'
 " Plug 'udalov/kotlin-vim'
 " Plug 'pechorin/any-jump.vim'
+Plug 'dense-analysis/ale'
 call plug#end()
 " }}}
 
@@ -128,23 +128,23 @@ let maplocalleader = "\\"
 " pbcopy
 if has('mac')
     let g:clipboard = {
-        \   'name': 'macOS-clipboard',
-		\   'copy': {
-		\      '+': 'pbcopy',
-		\      '*': 'pbcopy',
-		\    },
-		\   'paste': {
-		\      '+': 'pbpaste',
-		\      '*': 'pbpaste',
-		\   },
-		\   'cache_enabled': 0,
-		\ }
+                \   'name': 'macOS-clipboard',
+                \   'copy': {
+                \      '+': 'pbcopy',
+                \      '*': 'pbcopy',
+                \    },
+                \   'paste': {
+                \      '+': 'pbpaste',
+                \      '*': 'pbpaste',
+                \   },
+                \   'cache_enabled': 0,
+                \ }
 elseif has('linux')
     vmap "+y :!xclip -f -sel clip
     map "+p :r!xclip -o -sel clip
 endif
 if has('clipboard')
-	set clipboard& clipboard+=unnamedplus
+    set clipboard& clipboard+=unnamedplus
 endif
 " }}}
 
@@ -156,145 +156,22 @@ autocmd FileType go set updatetime=100
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 " }}}
 
-" " coc.nvim default {{{
-" " if hidden is not set, TextEdit might fail.
-" set hidden
-"
-" " Some servers have issues with backup files, see #649
-" set nobackup
-" set nowritebackup
-"
-" " Better display for messages
-" set cmdheight=2
-"
-" " You will have bad experience for diagnostic messages when it's default 4000.
-" set updatetime=300
-"
-" " don't give |ins-completion-menu| messages.
-" set shortmess+=c
-"
-" " always show signcolumns
-" set signcolumn=yes
-"
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-"
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" let g:coc_snippet_next = '<tab>'
-"
-" " Use tab for trigger completion with characters ahead and navigate.
-" " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" " inoremap <silent><expr> <TAB>
-" "       \ pumvisible() ? "\<C-n>" :
-" "       \ <SID>check_back_space() ? "\<TAB>" :
-" "       \ coc#refresh()
-" " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" "
-" " function! s:check_back_space() abort
-" "   let col = col('.') - 1
-" "   return !col || getline('.')[col - 1]  =~# '\s' " endfunction
-"
-" " Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
-"
-" " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" " Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"
-" " Use `[c` and `]c` to navigate diagnostics
-" nmap <silent> [c <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]c <Plug>(coc-diagnostic-next)
-"
-" " Remap keys for gotos
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-"
-" " Use K to show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-"
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-"
-" " Highlight symbol under cursor on CursorHold
-" " autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-" " Remap for rename current word
-" nmap <leader>rn <Plug>(coc-rename)
-"
-" " Remap for format selected region
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-"
-" augroup mygroup
-"   autocmd!
-"   " Setup formatexpr specified filetype(s).
-"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"   " Update signature help on jump placeholder
-"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-" augroup end
-"
-" " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-"
-" " Remap for do codeAction of current line
-" nmap <leader>ac  <Plug>(coc-codeaction)
-" " Fix autofix problem of current line
-" nmap <leader>qf  <Plug>(coc-fix-current)
-"
-" " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-" nmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <TAB> <Plug>(coc-range-select)
-" xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
-"
-" " Use `:Format` to format current buffer
-" command! -nargs=0 Format :call CocAction('format')
-"
-" " Use `:Fold` to fold current buffer
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-"
-" " use `:OR` for organize import of current buffer
-" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-"
-" " Add status line support, for integration with other plugin, checkout `:h coc-status`
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-"
-" " Using CocList
-" " Show all diagnostics
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document
-" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols
-" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" " Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" " Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" " Resume latest coc list
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" " edit current type snippets
-" nnoremap <silent> <space>es :CocCommand snippets.editSnippets<CR>
-" " }}}
 
-" coc.nvim new {{{
+" coc.nvim extensions {{{
+let g:coc_global_extensions = [
+            \ 'coc-diagnostic',
+            \ 'coc-json',
+            \ 'coc-yaml',
+            \ 'coc-git',
+            \ 'coc-tsserver',
+            \ 'coc-snippets',
+            \ 'coc-pairs',
+            \ 'coc-vimlsp',
+            \ 'coc-highlight',
+            \ ]
+" }}}
+
+" coc.nvim settings {{{
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -320,14 +197,14 @@ set signcolumn=yes
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -336,15 +213,15 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Use `complete_info` if your (Neo)Vim version supports it.
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>g <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -356,11 +233,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -368,26 +245,27 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>Rf <Plug>(coc-refactor)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>s  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -437,7 +315,7 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>o
 " }}}
 
-" " coc.nvim {{{
+" " coc.nvim old {{{
 " " Use tab for trigger completion with characters ahead and navigate.
 " " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 " " Use <C-l> for trigger snippet expand.
@@ -471,9 +349,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>o
 
 " golang {{{
 augroup golang
-  " this one is which you're most likely to use?
-  autocmd FileType go nnoremap <buffer> <leader>gi :GoImport<space>
-  autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+    " this one is which you're most likely to use?
+    autocmd FileType go nnoremap <buffer> <leader>gi :GoImport<space>
+    autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 augroup end
 " }}}
 
@@ -486,6 +364,7 @@ nnoremap <leader>m :TagbarToggle<CR>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>gt :Gist
 
+nnoremap <leader>es :CocCommand snippets.editSnippets<CR>
 nnoremap <leader>epac :e ~/Library/Application Support/V2RayX/pac/pac.js<CR>
 nmap <Leader>t <Plug>(coc-translator-p)
 autocmd BufWinEnter,WinEnter term://* startinsert
@@ -513,14 +392,14 @@ endif
 
 " vim-quickrun {{{
 let g:quickrun_config = {
-\    "_" : {
-\        "outputter" : "message",
-\    },
-\    'dart': {
-\       'command': 'dart',
-\       'cmdopt': '--enable-asserts',
-\    }
-\}
+            \    "_" : {
+            \        "outputter" : "message",
+            \    },
+            \    'dart': {
+            \       'command': 'dart',
+            \       'cmdopt': '--enable-asserts',
+            \    }
+            \}
 " }}}
 " vim-barbaric {{{
 " install:
@@ -579,27 +458,27 @@ autocmd FileType tex let b:coc_pairs = [["$", "$"]]
 autocmd FileType vim let b:coc_pairs_disabled = ['"']
 " }}}
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [
-    \     [ 'mode', 'paste' ],
-    \     [ 'gitbranch', 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method', 'modified' ]
-    \   ],
-    \   'right':[
-    \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
-    \     [ 'blame' ]
-    \   ],
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'fugitive#head',
-    \   'blame': 'LightlineGitBlame',
-    \ }
-    \ }
+            \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \   'left': [
+            \     [ 'mode', 'paste' ],
+            \     [ 'gitbranch', 'ctrlpmark', 'git', 'diagnostic', 'cocstatus', 'filename', 'method', 'modified' ]
+            \   ],
+            \   'right':[
+            \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+            \     [ 'blame' ]
+            \   ],
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head',
+            \   'blame': 'LightlineGitBlame',
+            \ }
+            \ }
 
 function! LightlineGitBlame() abort
-  let blame = get(b:, 'coc_git_blame', '')
-  " return blame
-  return winwidth(0) > 120 ? blame : ''
+    let blame = get(b:, 'coc_git_blame', '')
+    " return blame
+    return winwidth(0) > 120 ? blame : ''
 endfunction
 
 " }}}
@@ -608,42 +487,44 @@ endfunction
 nnoremap <C-p> :<C-u>FZF<CR>
 
 if has('nvim')
-  let $FZF_DEFAULT_OPTS='--layout=reverse'
-  let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
-  function! OpenFloatingWin()
-    let height = &lines - 3
-    let width = float2nr(&columns - (&columns * 2 / 10))
-    let col = float2nr((&columns - width) / 2)
+    let $FZF_DEFAULT_OPTS='--layout=reverse'
+    let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
+    function! OpenFloatingWin()
+        let height = &lines - 3
+        let width = float2nr(&columns - (&columns * 2 / 10))
+        let col = float2nr((&columns - width) / 2)
 
-    " 设置浮动窗口打开的位置，大小等。
-    " 这里的大小配置可能不是那么的 flexible 有继续改进的空间
-    let opts = {
-          \ 'relative': 'editor',
-          \ 'row': height * 0.3,
-          \ 'col': col + 25,
-          \ 'width': width * 2 / 3,
-          \ 'height': height / 2
-          \ }
+        " 设置浮动窗口打开的位置，大小等。
+        " 这里的大小配置可能不是那么的 flexible 有继续改进的空间
+        let opts = {
+                    \ 'relative': 'editor',
+                    \ 'row': height * 0.3,
+                    \ 'col': col + 25,
+                    \ 'width': width * 2 / 3,
+                    \ 'height': height / 2
+                    \ }
 
-    let buf = nvim_create_buf(v:false, v:true)
-    let win = nvim_open_win(buf, v:true, opts)
+        let buf = nvim_create_buf(v:false, v:true)
+        let win = nvim_open_win(buf, v:true, opts)
 
-    " 设置浮动窗口高亮
-    call setwinvar(win, '&winhl', 'Normal:Pmenu')
+        " 设置浮动窗口高亮
+        call setwinvar(win, '&winhl', 'Normal:Pmenu')
 
-    setlocal
-          \ buftype=nofile
-          \ nobuflisted
-          \ bufhidden=hide
-          \ nonumber
-          \ norelativenumber
-          \ signcolumn=no
-  endfunction
+        setlocal
+                    \ buftype=nofile
+                    \ nobuflisted
+                    \ bufhidden=hide
+                    \ nonumber
+                    \ norelativenumber
+                    \ signcolumn=no
+    endfunction
 endif
 " }}}
+
 " Command for shortkey {{{
 inoremap jj <ESC>
 " }}}
+
 " vim-mundo ------- {{{
 set undofile
 nnoremap <leader>u :MundoToggle<cr>
@@ -652,6 +533,7 @@ let g:mundo_preview_bottom = 1
 let g:mundo_tree_statusline = "mundo"
 let g:mundo_preview_statusline = "mundo preview"
 " }}}
+
 " python {{{
 if has('mac')
     let g:python3_host_prog="/usr/local/bin/python3"
@@ -659,19 +541,17 @@ elseif has('linux')
     let g:python3_host_prog="/usr/bin/python3"
 endif
 " }}}
-"
+
 " coc-vimlsp {{{
 " document highlight
 let g:markdown_fenced_languages = [
-      \ 'vim',
-      \ 'help'
-      \]
-
+            \ 'vim',
+            \ 'help'
+            \]
 " }}}
 
 " vimtex {{{
 " require: brew cask install mactex skim
-
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
 let g:vimtex_quickfix_mode=0
@@ -681,20 +561,20 @@ let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode $*'
 let g:vimtex_compiler_enabled=1
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_view_general_options
-    \ = '-reuse-instance -forward-search @tex @line @pdf'
+            \ = '-reuse-instance -forward-search @tex @line @pdf'
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 
 " TOC settings
 let g:vimtex_toc_config = {
-      \ 'name' : 'TOC',
-      \ 'layers' : ['content', 'todo', 'include'],
-      \ 'resize' : 1,
-      \ 'split_width' : 50,
-      \ 'todo_sorted' : 0,
-      \ 'show_help' : 1,
-      \ 'show_numbers' : 1,
-      \ 'mode' : 2,
-      \}
+            \ 'name' : 'TOC',
+            \ 'layers' : ['content', 'todo', 'include'],
+            \ 'resize' : 1,
+            \ 'split_width' : 50,
+            \ 'todo_sorted' : 0,
+            \ 'show_help' : 1,
+            \ 'show_numbers' : 1,
+            \ 'mode' : 2,
+            \}
 "
 " }}}
 
@@ -710,9 +590,9 @@ let g:graphviz_output_format = 'pdf'
 " Options passed on to dot. Default is ''.
 let g:graphviz_shell_option = ''
 augroup graphviz
-  " this one is which you're most likely to use?
-  "autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR> :Graphviz! pdf<CR>
-  autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR>
+    " this one is which you're most likely to use?
+    "autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR> :Graphviz! pdf<CR>
+    autocmd FileType dot nnoremap <buffer> <leader>gb :GraphvizCompile<CR>
 augroup end
 " }}}
 
@@ -736,12 +616,13 @@ let NERDTreeIgnore=['node_modules']
 " }}}
 " range {{{
 map <leader>rg :Ranger<CR>
+let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
 let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
 " clang-format {{{
 let g:clang_format#command="clang-format"
-let g:clang_format#code_style="Chromium"
+let g:clang_format#code_style="Mozilla"
 let g:clang_format#detect_style_file=1
 let g:clang_format#auto_format=1
 " }}}
@@ -765,3 +646,28 @@ if !exists("g:tcomment#filetype#guess_json")
     let g:tcomment#filetype#guess_json='go'
 endif
 " }}}
+" " ALE {{{
+" " Load all plugins now.
+" " Plugins need to be added to runtimepath before helptags can be generated.
+" packloadall
+" " Load all of the helptags now, after plugins have been loaded.
+" " All messages and errors will be ignored.
+" silent! helptags ALL
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Map movement through errors without wrapping.
+nmap <silent> <leader>ap <Plug>(ale_previous)
+nmap <silent> <leader>an <Plug>(ale_next)
+" OR map keys to use wrapping.
+nmap <silent> <leader>ap <Plug>(ale_previous_wrap)
+nmap <silent> <leader>an <Plug>(ale_next_wrap)
+" highlight ALEWarning ctermbg=DarkMagenta
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+" let g:ale_open_list = 1
+" " Set this if you want to.
+" " This can be useful if you are combining ALE with
+" " some other plugin which sets quickfix errors, etc.
+" let g:ale_keep_list_window_open = 1
+"  " Show 5 lines of errors (default: 10)
+" let g:ale_list_window_size = 5
+" " }}}

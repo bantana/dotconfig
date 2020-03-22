@@ -1,20 +1,13 @@
 {
     "diagnostic-languageserver.filetypes": {
-        // lint `sh` (includes `bash`) files
         "sh": "shellcheck"
     },
     "diagnostic-languageserver.formatFiletypes": {
-        // format `sh` (includes `bash`) files using formatter defined below
         "sh": "shfmt"
     },
     "diagnostic-languageserver.formatters": {
-        // define our formatter so that we can reference it from
-        // `diagnostic-languageserver.formatFiletypes`
         "shfmt": {
             "command": "shfmt",
-            // all the below args are entirely optional
-            // primarily listed here to call out that flags which take an
-            // argument (such as `-i <num-spaces>` for specifying indentation) // should be split into two strings, the flag and then the value
             "args": ["-i", "2", "-bn", "-ci", "-sr"]
         }
     },
@@ -24,16 +17,17 @@
     "suggest.detailField": "abbr",
     "suggest.triggerCompletionWait": 100,
     "suggest.echodocSupport": true,
+    // debug
+    // "diagnostic.messageTarget": "float",
+    // "diagnostic.enableMessage": "always",
+    "diagnostic.displayByAle": true,
+    // "codeLens.enable": true,
+    // end_debug
     "diagnostic.signOffset": 9999999,
     "diagnostic.errorSign": "⤫",
     "diagnostic.warningSign": "⚠",
-    "diagnostic.displayByAle": false,
     "diagnostic.refreshOnInsertMode": true,
     "diagnostic.checkCurrentLine": true,
-    // "sourcekit.enable": true,
-    // "sourcekit.commandPath": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
-    // "sourcekit.commandPath": "sourcekit-lsp",
-    // "sourcekit.trace.server":"verbose",
     "tslint.autoFixOnSave": true,
     "prettier.eslintIntegration": true,
     "prettier.tslintIntegration": true,
@@ -54,7 +48,7 @@
     ],
 
     "javascript.suggestionActions.enabled": false,
-    "coc.preferences.colorSupport": false,
+    "coc.preferences.colorSupport": true,
 
     "coc.preferences.formatOnSaveFiletypes": [
         "dart"
@@ -73,7 +67,6 @@
     "java.errors.incompleteClasspath.severity": "ignore",
 
     "snippets.ultisnips.enable": true,
-    // "snippets.ultisnips.directories": ["~/.config/coc/ultisnips"],
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "gosnippets/UltiSnips"
