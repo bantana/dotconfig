@@ -12,7 +12,7 @@ source ~/.profile && proxy
 bash ./build-essential.sh
 
 # c/c++ language
-bash ./ccls.sh
+bash ./clangd.sh
 
 # install golang
 bash ./golang.sh
