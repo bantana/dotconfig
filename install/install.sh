@@ -14,6 +14,9 @@ bash ./build-essential.sh
 # c/c++ language
 bash ./clangd.sh
 
+# shellcheck, shfmt, rg, ag, etc. tools
+bash ./linuxtools.sh
+
 # install golang
 bash ./golang.sh
 
