@@ -16,9 +16,9 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     else
 	    sudo curl -sL "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -o /usr/local/bin/nvim && sudo chmod +x /usr/local/bin/nvim
     fi
-    if [[ $? -ne 0 ]]; then
-        sudo snap install nvim --beta --classic >&2
-    fi
+    # if [[ $? -ne 0 ]]; then
+    #     sudo snap install nvim --beta --classic >&2
+    # fi
     if [[ $? -ne 0 ]]; then
         err "nvim install failed!"
         exit 1
