@@ -80,6 +80,13 @@ if [[ -f $FUCHSIA_DIR/scripts/fx-env.sh ]]; then
  source $FUCHSIA_DIR/scripts/fx-env.sh
 fi
 
+# llvm clangd
+if [[ -d /usr/local/opt/llvm/bin ]]; then
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
+    export LDFLAGS="-L/usr/local/opt/llvm/lib"
+    export CPPFLAGS="-I/usr/local/opt/llvm/include"
+fi
+
 # ruby 2.6.x
 # By default, binaries installed by gem will be placed into:
 # /usr/local/lib/ruby/gems/2.6.0/bin

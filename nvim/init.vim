@@ -168,6 +168,7 @@ let g:coc_global_extensions = [
             \ 'coc-pairs',
             \ 'coc-vimlsp',
             \ 'coc-highlight',
+            \ 'coc-clangd',
             \ ]
 " }}}
 
