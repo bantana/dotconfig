@@ -50,7 +50,11 @@ $(TARGET): $(TARGET).c
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(TARGET) $(TARGET).c
 
 run: all
-	$(BUILD_DIR)/$(TARGET) $(ARGS)
+	$(BUILD_DIR)/$(TARGET)
+
+dot: directories
+	find . -name '*.c' > $(BUILD_DIR)/cscope.files
+	cd $(BUILD_DIR); cscope -b -c ../*.c; tceetree; dot -Tpng -O tceetree.out;
 
 valgrind:
 	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes $(BUILD_DIR)/$(TARGET)
