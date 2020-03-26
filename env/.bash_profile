@@ -54,14 +54,13 @@ else
     git clone -b beta https://github.com/flutter/flutter.git ~/flutter && source ~/.bash_profile
 fi
 
-if [[ -d `/usr/libexec/java_home` ]]; then
- export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-# export JAVA=`/usr/libexec/java_home -v 13`
-#  export JAVA=`/usr/libexec/java_home -v 12`
-#  export JAVA12=`/usr/libexec/java_home -v 12`
-# export JAVA8=`/usr/libexec/java_home -v 1.8`
-#  export JAVA11=`/usr/libexec/java_home -v 11`
+# if [[ -d `/usr/libexec/java_home` ]]; then
+# #  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+# fi
+if [[ -d '/usr/local/opt/openjdk/bin' ]]; then
+    export PATH="/usr/local/opt/openjdk/bin:$PATH"
 fi
+
 
 #if [[ -d /usr/local/opt/groovy/libexec ]]; then
 #  export GROOVY_HOME=/usr/local/opt/groovy/libexec

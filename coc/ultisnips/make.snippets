@@ -54,7 +54,7 @@ run: all
 
 dot: directories
 	find . -name '*.c' > $(BUILD_DIR)/cscope.files
-	cd $(BUILD_DIR); cscope -b -c ../*.c; tceetree; dot -Tpng -O tceetree.out;
+	cd $(BUILD_DIR); cscope -b -c ../*.c; tceetree; dot -Tpng -O tceetree.out; open tceetree.out.png
 
 valgrind:
 	valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes $(BUILD_DIR)/$(TARGET)
