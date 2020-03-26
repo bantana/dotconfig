@@ -167,7 +167,6 @@ let g:coc_global_extensions = [
             \ 'coc-snippets',
             \ 'coc-pairs',
             \ 'coc-vimlsp',
-            \ 'coc-highlight',
             \ 'coc-clangd',
             \ ]
 " }}}
@@ -242,7 +241,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
