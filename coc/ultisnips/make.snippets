@@ -50,7 +50,7 @@ $(TARGET): $(TARGET).c
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(TARGET) $(TARGET).c
 
 run: all
-	$(BUILD_DIR)/$(TARGET)
+	$(BUILD_DIR)/$(TARGET) $(ARGS)
 
 dot: directories
 	find . -name '*.c' > $(BUILD_DIR)/cscope.files
