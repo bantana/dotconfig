@@ -48,3 +48,19 @@ function trim() {
     var="${var%"%${var##*[![:space:]]}"}"
     printf '%s' "$var"
 }
+
+function sysupdae() {
+if [[ "$(uname -s)" == "Linux" ]]; then
+    echo ">>> Found Linux OS ..."
+    # check ubuntu
+    if [[ "$(lsb_release -is)" == "Ubuntu" ]]; then
+        echo ">>> Found Ubuntu OS"
+        sudo apt -y update; sudo apt -y upgrade ; sudo apt -y autoremove; sudo apt clean --dry-run
+    fi
+fi
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    echo ">>> Found Darwin OS ..."
+    # TODO: test brew return value
+    # brew bundle --file ../Brewfile
+fi
+}
