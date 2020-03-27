@@ -6,7 +6,7 @@
 bash ./checkenv.sh
 
 # reload ./profile
-source ~/.profile && proxy
+source "$HOME/.profile" #  && proxy
 
 # TODO: build-essential only linux
 bash ./build-essential.sh
