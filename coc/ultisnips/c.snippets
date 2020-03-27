@@ -35,3 +35,10 @@ snippet stupidline "space line" b
 printf("----I'm stupid line----\n");
 ${1}
 endsnippet
+snippet stdef "typedef struct {..} TypeName;" b
+typedef struct
+{
+	${2:char*} ${3:name};
+} ${1:TypeName};
+${0}
+endsnippet
