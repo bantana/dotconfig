@@ -40,3 +40,11 @@ function addToPATH() {
         *) PATH="$1:$PATH" ;; # or PATH="$PATH:$1"
     esac
 }
+function trim() {
+    local var="$*"
+    # remove leading whitespace characters
+    var="${var#"${var%%[![:space:]]*}"}"
+    # remove trailing whitespace characters
+    var="${var%"%${var##*[![:space:]]}"}"
+    printf '%s' "$var"
+}
