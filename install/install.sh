@@ -6,7 +6,13 @@
 bash ./checkenv.sh
 
 # reload ./profile
-source "$HOME/.profile" #  && proxy
+if [[ "$(uname -s)" == "Linux" ]]; then
+    source "$HOME/.profile" #  && proxy
+fi
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    source "$HOME/.bash_profile" #  && proxy
+fi
 
 # TODO: build-essential only linux
 bash ./build-essential.sh
