@@ -15,7 +15,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 fi
 
 # TODO: build-essential only linux
-bash ./build-essential.sh
+# bash ./build-essential.sh
 
 # c/c++ language
 bash ./clangd.sh
@@ -27,7 +27,7 @@ bash ./linuxtools.sh
 bash ./golang.sh
 
 # node@10
-bash ./node10.sh
+bash ./node12.sh
 
 # yarn
 bash ./yarn.sh

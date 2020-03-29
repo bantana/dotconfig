@@ -7,7 +7,7 @@ export EDITOR="nvim"
 set -o vi
 
 # fix node command path
-export PATH="/usr/local/opt/node@10/bin:$PATH"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
 [[ -d ~/.npm-global ]] && PATH=~/.npm-global/bin:$PATH
 
 # proxy.sh
