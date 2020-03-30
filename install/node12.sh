@@ -14,11 +14,11 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     # check ubuntu
     if [[ "$(lsb_release -is)" == "Ubuntu" ]]; then
         echo ">>> Found Ubuntu OS"
-        curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-        # curl -sL install-node.now.sh/lts |sudo bash
+        # curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+        curl -sL install-node.now.sh/lts |sudo -E bash -
         # sudo apt update
         # sudo apt -y install gcc g++ make
-        sudo apt -y install nodejs
+        # sudo apt -y install nodejs
     fi
 fi
 if [[ "$(uname -s)" == "Darwin" ]]; then
