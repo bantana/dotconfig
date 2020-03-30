@@ -73,3 +73,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 # cheat
 export CHEAT_CONFIG_PATH="$HOME/.config/cheat/conf.yml"
+
+if [ -f /usr/share/autojump/autojump.bash ]; then
+    . /usr/share/autojump/autojump.bash
+fi
+

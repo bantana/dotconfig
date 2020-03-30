@@ -670,4 +670,10 @@ nmap <silent> <leader>an <Plug>(ale_next_wrap)
 " let g:ale_keep_list_window_open = 1
 "  " Show 5 lines of errors (default: 10)
 " let g:ale_list_window_size = 5
+" let g:ale_c_clang_executable='clang'
+" let g:ale_c_clang_options='-std=c11 -Wall'
+" let g:ale_c_clangd_executable='clangd'
+" let g:ale_c_clangtidy_executable='clang-tidy'
+" let g:ale_c_clangformat_executable='clang-format'
+let g:ale_linters_ignore = {'c': ['gcc']}
 " " }}}
