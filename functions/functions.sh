@@ -49,7 +49,7 @@ function trim() {
     printf '%s' "$var"
 }
 
-function sysupdae() {
+function sysupdate() {
 if [[ "$(uname -s)" == "Linux" ]]; then
     echo ">>> Found Linux OS ..."
     # check ubuntu
