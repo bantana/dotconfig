@@ -26,7 +26,7 @@ function myip() {
         ifconfig | grep -E "inet.*netmask.*broadcast"
     fi
     if [[ $(uname -s) == "Linux" ]]; then
-        ip addr | grep -v "inet6" | grep -E "inet.*brd.*scope"
+        ip addr | grep -v "inet6" | grep -E "inet.*brd.*scope"| grep -Po 'inet \K[\d.]+'
     fi
 }
 
