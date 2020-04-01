@@ -63,8 +63,8 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/.config/bin" ] ; then
+    PATH="$HOME/.config/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists

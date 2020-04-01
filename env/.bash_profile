@@ -105,6 +105,7 @@ fi
 
 
 [[ -d ~/bin ]] && PATH=$PATH:~/bin
+[[ -d ~/.config/bin ]] && PATH=$PATH:~/.config/bin
 
 # rust bin
 if [[ -f "$HOME/.cargo/env" ]]; then
