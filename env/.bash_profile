@@ -23,13 +23,6 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
 
-# if you use bash 4.1+, brew install git bash-completion@2
-# if [[ -d $(brew --prefix)/etc/bash_completion.d ]]; then
-#   export BASH_COMPLETION_COMPAT_DIR=$(brew --prefix)/etc/bash_completion.d
-# fi
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-[[ -r "/usr/local/opt/bash-completion@2/share/bash-completion/completions/ssh" ]] && . "/usr/local/opt/bash-completion@2/share/bash-completion/completions/ssh"
-
 if [[ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash ]]; then
     source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
 fi
@@ -120,3 +113,5 @@ export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
 [[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
