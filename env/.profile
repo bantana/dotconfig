@@ -67,6 +67,8 @@ if [ -d "$HOME/.config/bin" ] ; then
     PATH="$HOME/.config/bin:$PATH"
 fi
 
+[[ -d ~/bin ]] && PATH=$PATH:~/bin
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
