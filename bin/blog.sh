@@ -9,4 +9,4 @@ if [[ "$#" -ne 3 ]]; then
    echo "$#"
    exit 1;
 fi
-blog -reload -http "$1":"$2" -template "$(go env GOPATH)/src/golang.org/x/blog/template" -static "$(go env GOPATH)/src/golang.org/x/blog/static" -website "$(go env GOPATH)/src/golang.org/x/website/content/static/" -content "$3"
+blog -reload -http "$1":"$2" -template "$(go env GOPATH)/src/golang.org/x/blog/template" -static "$(go env GOPATH)/src/golang.org/x/blog/static" -website "$(go env GOPATH)/src/golang.org/x/website/content/static" -content "$3"

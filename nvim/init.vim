@@ -367,6 +367,7 @@ nnoremap <leader>gt :Gist
 nnoremap <leader>es :CocCommand snippets.editSnippets<CR>
 nnoremap <leader>epac :e ~/Library/Application Support/V2RayX/pac/pac.js<CR>
 nmap <Leader>t <Plug>(coc-translator-p)
+vmap <Leader>t <Plug>(coc-translator-pv)
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
