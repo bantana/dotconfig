@@ -54,6 +54,7 @@ fi
 # rust bin
 if [[ -f "$HOME/.cargo/env" ]]; then
     source "$HOME/.cargo/env"
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
@@ -79,4 +80,5 @@ export CHEAT_CONFIG_PATH="$HOME/.config/cheat/conf.yml"
 if [ -f /usr/share/autojump/autojump.bash ]; then
     . /usr/share/autojump/autojump.bash
 fi
+
 
