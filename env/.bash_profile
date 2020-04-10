@@ -115,3 +115,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 [[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+[[ -d "/usr/local/opt/python@3.8/bin" ]] &&  export PATH="/usr/local/opt/python@3.8/bin:$PATH"
