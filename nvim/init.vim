@@ -60,6 +60,8 @@ Plug 'rhysd/vim-clang-format'
 " Plug 'udalov/kotlin-vim'
 " Plug 'pechorin/any-jump.vim'
 Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
+Plug 'bantana/swift'
 call plug#end()
 " }}}
 
@@ -139,9 +141,11 @@ if has('mac')
                 \   },
                 \   'cache_enabled': 0,
                 \ }
+    let g:rust_clip_command = 'pbcopy'
 elseif has('linux')
     vmap "+y :!xclip -f -sel clip
     map "+p :r!xclip -o -sel clip
+    let g:rust_clip_command = 'xclip -selection clipboard'
 endif
 if has('clipboard')
     set clipboard& clipboard+=unnamedplus
@@ -315,38 +319,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>o
 " }}}
-
-" " coc.nvim old {{{
-" " Use tab for trigger completion with characters ahead and navigate.
-" " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" " Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
-"
-" " Use <C-j> for select text for visual placeholder of snippet.
-" vmap <C-j> <Plug>(coc-snippets-select)
-"
-" " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-" let g:coc_snippet_next = '<c-j>'
-"
-" " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-" let g:coc_snippet_prev = '<c-k>'
-"
-" " Use <C-j> for both expand and jump (make expand higher priority.)
-" imap <C-j> <Plug>(coc-snippets-expand-jump)
-"
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-"
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" let g:coc_snippet_next = '<tab>'
-" " }}}
 
 " golang {{{
 augroup golang
@@ -647,6 +619,9 @@ endif
 if !exists("g:tcomment#filetype#guess_json")
     let g:tcomment#filetype#guess_json='go'
 endif
+if !exists("g:tcomment#filetype#guess_swift")
+    let g:tcomment#filetype#guess_json='go'
+endif
 " }}}
 " " ALE {{{
 " " Load all plugins now.
@@ -679,3 +654,6 @@ nmap <silent> <leader>an <Plug>(ale_next_wrap)
 " let g:ale_c_clangformat_executable='clang-format'
 let g:ale_linters_ignore = {'c': ['gcc']}
 " " }}}
+"
+highlight link CocErrorSign GruvboxRed
+nnoremap <leader>m :!swiftformat --swiftversion 5 % --quiet<cr>:bufdo :e!<cr>

@@ -11,18 +11,14 @@
             "args": ["-i", "2", "-bn", "-ci", "-sr"]
         }
     },
+    "sourcekit.commandPath": "/usr/share/swift/usr/bin/sourcekit-lsp",
     "suggest.triggerAfterInsertEnter": false,
     "suggest.timeout": 2000,
     "suggest.noselect": true,
     "suggest.detailField": "abbr",
     "suggest.triggerCompletionWait": 100,
     "suggest.echodocSupport": true,
-    // debug
-    // "diagnostic.messageTarget": "float",
-    // "diagnostic.enableMessage": "always",
     "diagnostic.displayByAle": true,
-    // "codeLens.enable": true,
-    // end_debug
     "diagnostic.signOffset": 9999999,
     "diagnostic.errorSign": "⤫",
     "diagnostic.warningSign": "⚠",
@@ -143,14 +139,14 @@
             "filetypes": ["sh"],
             "ignoredRootPaths": ["~"]
         },
-        "siwft": {
-            //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
-            "command": "sourcekit-lsp",
-            "args": [],
-            "filetypes": ["swift"],
-            "initializationOptions": {},
-            "settings": {}
-        },
+        // "swift": {
+        //     //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
+        //     "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
+        //     "args": [],
+        //     "filetypes": ["swift"],
+        //     "initializationOptions": {},
+        //     "settings": {}
+        // },
         "julia": {
             "command": "/usr/local/bin/julia",
             "args": [

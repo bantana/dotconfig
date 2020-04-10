@@ -47,6 +47,17 @@ if [ -d ~/.pub-cache/bin ]; then
   export PATH="$PATH:$PUB_BIN"
 fi
 
+# flutter on china
+if [ -f ~/flutter/bin/flutter ]; then
+    export FLUTTER_ROOT="$HOME/flutter"
+    export ENABLE_FLUTTER_DESKTOP=true
+    # export PUB_HOSTED_URL=https://pub.flutter-io.cn
+    # export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+    export PATH="$PATH:$HOME/flutter/bin"
+# else
+#     git clone -b beta https://github.com/flutter/flutter.git ~/flutter && source ~/.bash_profile
+fi
+
 # swift env
 if [[ -d "/usr/share/swift" ]]; then
     PATH="$PATH:/usr/share/swift/usr/bin"
