@@ -2,6 +2,7 @@ coc/extensions/
 coc/history.json
 coc/memos.json
 coc/mru
+coc/lists
 coc/snippets-mru
 coc/commands
 configstore/
