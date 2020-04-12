@@ -333,7 +333,7 @@ nnoremap <leader>ev :e ~/.config/nvim/init.vim<CR>
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>/ :Ack!<Space>
-nnoremap <leader>m :TagbarToggle<CR>
+" nnoremap <leader>m :TagbarToggle<CR>
 nnoremap <leader>q :Bclose<CR>
 nnoremap <leader>gt :Gist
 
