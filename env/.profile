@@ -92,4 +92,7 @@ if [ -f /usr/share/autojump/autojump.bash ]; then
     . /usr/share/autojump/autojump.bash
 fi
 
+if [ -d "$HOME/cling/bin" ] ; then
+    PATH="$PATH:$HOME/cling/bin"
+fi
 
