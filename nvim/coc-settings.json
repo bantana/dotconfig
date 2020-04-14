@@ -48,6 +48,7 @@
     "coc.preferences.colorSupport": true,
 
     "coc.preferences.formatOnSaveFiletypes": [
+        "rust",
         "dart"
     ],
     "flutter.enabled": true,
