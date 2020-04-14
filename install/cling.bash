@@ -15,6 +15,10 @@ To use cling, add the following line to your .profile:
 if [ -d "\$HOME/cling/bin" ] ; then
     PATH="\$PATH:\$HOME/cling/bin"
 fi
+
+
+may be you need install g++-7:
+sudo apt install g++-7
 "
     exit 0
 fi
