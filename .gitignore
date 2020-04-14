@@ -17,3 +17,6 @@ ranger/tagged
 
 cheat/
 chrome_infra/
+
+# rust
+evcxr/
