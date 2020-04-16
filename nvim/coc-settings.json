@@ -32,6 +32,7 @@
         "vue-html": "html",
         "javascript": "javascriptreact"
     },
+    "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
     "python.autoComplete.addBrackets": true,
     "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
     "eslint.autoFix": true,
