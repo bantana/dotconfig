@@ -8,7 +8,12 @@ function mkcd() {
 
 function proxy() {
     echo 'Setting variable "http[s]_proxy"...'
-    export HTTP_PROXY="http://192.168.64.1:2000"
+    if [[ $(uname -s) == "Darwin" ]]; then
+        export HTTP_PROXY="http://127.0.0.1:2000"
+    fi
+    if [[ $(uname -s) == "Linux" ]]; then
+        export HTTP_PROXY="http://192.168.64.1:2000"
+    fi
     export HTTPS_PROXY=$HTTP_PROXY
     export NO_PROXY="127.0.0.1, localhost, *.local, 192.168.64/24, 169.254/16, registry.npmjs.com"
     echo 'Done!'
