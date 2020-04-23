@@ -116,7 +116,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set wrap
-set textwidth=110 "80-width lines is for 1995"
+" set textwidth=110 "80-width lines is for 1995"
 let &wrapmargin=&textwidth
 set formatoptions=qrn1
 " }}}
