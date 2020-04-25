@@ -15,7 +15,7 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     if [[ "$(lsb_release -is)" == "Ubuntu" ]]; then
         echo ">>> Found Ubuntu OS"
         # curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-        curl -sL install-node.now.sh/lts |yes Y|sudo -E bash -
+        curl -sL install-node.now.sh/lts |sudo -E bash -
         # sudo apt update
         # sudo apt -y install gcc g++ make
         # sudo apt -y install nodejs
