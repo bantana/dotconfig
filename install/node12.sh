@@ -15,7 +15,7 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     if [[ "$(lsb_release -is)" == "Ubuntu" ]]; then
         echo ">>> Found Ubuntu OS"
         # curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-        curl -sL install-node.now.sh/lts |sudo -E bash -
+        curl -sL install-node.now.sh/lts |yes Y|sudo -E bash -
         # sudo apt update
         # sudo apt -y install gcc g++ make
         # sudo apt -y install nodejs
@@ -34,5 +34,11 @@ fi
 if [[ ! -f ~/.npmrc ]]; then
     npm config set prefix='~/.npm-global'
 fi
-source ~/.profile
+
+if [[ "$(uname -s)" == "Linux" ]]; then
+    source ~/.profile
+fi
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    source ~/.bash_profile
+fi
 exit 0
