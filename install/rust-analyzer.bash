@@ -11,4 +11,5 @@ if [[ $? -ne 0 ]]; then
     echo "ERROR>>> error code: $?"
     exit 1
 fi
+chmod +x ~/.cargo/bin/rust-analyzer
 echo "success!"
