@@ -14,8 +14,8 @@ if [[ $(uname -s) == "Linux" ]]; then
         exit 0
     fi
     if [[ $(lsb_release -cs) == "focal" ]]; then
-        sudo snap install shellcheck shfmt
-        sudo apt install silversearcher-ag ripgrep
+        sudo snap install shfmt
+        sudo apt install shellcheck silversearcher-ag ripgrep
         exit 0
     fi
     if [[ $(uname -s) == "Darwin" ]]; then
