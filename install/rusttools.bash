@@ -3,4 +3,12 @@
 cargo install cargo-watch
 cargo install evcxr_repl
 cargo install fd-find
+
 #cargo install crowbook
+mkdir -p ~/.local/share/bash-completion/completions
+rustup completions bash > ~/.local/share/bash-completion/completions/rustup
+
+rustup toolchain add nightly
+cargo +nightly install papyrus
+cargo +nightly install racer
+
