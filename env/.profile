@@ -96,3 +96,12 @@ if [ -d "$HOME/cling/bin" ] ; then
     PATH="$PATH:$HOME/cling/bin"
 fi
 
+# fd-find
+# cargo install fd-find  or sudo apt install fd-find
+
+if [ -f ~/.fzf/bin/fzf ]; then
+    if [ -f ~/.cargo/bin/fd ]; then
+        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+fi
