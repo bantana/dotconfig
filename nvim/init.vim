@@ -659,3 +659,4 @@ highlight link CocErrorSign GruvboxRed
 nnoremap <leader>m :!swiftformat --swiftversion 5 % --quiet<cr>:bufdo :e!<cr>
 
 autocmd BufNewFile,BufRead *.toml set ft=cfg
+nmap <leader>l :bn<cr>
