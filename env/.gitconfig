@@ -1,11 +1,15 @@
 [include]
-    path = ~/.privates/github
-[includeIf "gitdir:~/iohttps/"]
     path = ~/.privates/git.user
-[includeIf "gitdir:~/wag/"]
-    path = ~/.privates/git.wag
+    # ~/.privates/git.user
+    # [user]
+    #     name = yourname
+    #     email = yourname@gmail.com
 [includeIf "gitdir:~/github/"]
     path = ~/.privates/github
+    # ~/.privates/github
+    # [github]
+    #     name = yourname
+    #     email = yourname@gmail.com
 [push]
 	default = matching
 [filter "media"]
