@@ -117,3 +117,16 @@ export PATH="$HOME/.cargo/bin:$PATH"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [[ -d "/usr/local/opt/python@3.8/bin" ]] &&  export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+
+# fd-find
+# cargo install fd-find  or sudo apt install fd-find
+
+if [ -f ~/.fzf/bin/fzf ]; then
+    if [ -f ~/.cargo/bin/fd ]; then
+        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+fi
+
+export GPG_TTY=$(tty)

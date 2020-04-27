@@ -61,6 +61,7 @@ Plug 'rhysd/vim-clang-format'
 " Plug 'pechorin/any-jump.vim'
 Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 Plug 'bantana/swift'
 call plug#end()
 " }}}
@@ -660,3 +661,17 @@ nnoremap <leader>m :!swiftformat --swiftversion 5 % --quiet<cr>:bufdo :e!<cr>
 
 autocmd BufNewFile,BufRead *.toml set ft=cfg
 nmap <leader>l :bn<cr>
+
+" vim-racer {{{
+set hidden
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_insert_paren = 1
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
+" }}}
