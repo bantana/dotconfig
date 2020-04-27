@@ -105,3 +105,5 @@ if [ -f ~/.fzf/bin/fzf ]; then
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     fi
 fi
+
+export GPG_TTY=$(tty)
