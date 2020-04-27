@@ -117,7 +117,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [[ -d "/usr/local/opt/python@3.8/bin" ]] &&  export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 # fd-find
 # cargo install fd-find  or sudo apt install fd-find
