@@ -21,3 +21,6 @@ chrome_infra/
 # rust
 evcxr/
 dlv
+
+#asciinema.org
+asciinema

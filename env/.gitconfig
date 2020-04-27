@@ -4,12 +4,18 @@
     # [user]
     #     name = yourname
     #     email = yourname@gmail.com
-[includeIf "gitdir:~/github/"]
+[includeIf "gitdir:**/github.com/**/.git"]
     path = ~/.privates/github
     # ~/.privates/github
+    # [user]
+    #     name = yourname
+    #     email = yourname@gmail.com
     # [github]
     #     name = yourname
     #     email = yourname@gmail.com
+[includeIf "gitdir:~/.config/"]
+    path = ~/.privates/github
+
 [push]
 	default = matching
 [filter "media"]
