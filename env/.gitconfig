@@ -1,6 +1,11 @@
-[user]
-	name = bantana
-	email = bantana@gmail.com
+[include]
+    path = ~/.privates/github
+[includeIf "gitdir:~/iohttps/"]
+    path = ~/.privates/git.user
+[includeIf "gitdir:~/wag/"]
+    path = ~/.privates/git.wag
+[includeIf "gitdir:~/github/"]
+    path = ~/.privates/github
 [push]
 	default = matching
 [filter "media"]
@@ -8,7 +13,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [core]
-	excludesfile = /Users/bantana/.gitignore
+	excludesfile = ~/.gitignore
 	editor = nvim
 [grep]
 	lineNumber = true
@@ -38,8 +43,6 @@
   lastid = "!git log --format="%h" -n 1"
   issue = !/usr/local/bin/git-issue
   ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
-[github]
-	user = bantana
 [credential]
 	helper = store
 [diff]
@@ -66,3 +69,7 @@
 # 	insteadof = https://github.com
 [url "ssh://git@iohttps.com"]
 	insteadOf = https://iohttps.com
+# # Proxy settings
+# [core]
+# 	gitProxy="ssh" for "kernel.org"
+# 	gitProxy=default-proxy ; for the rest
