@@ -3,6 +3,7 @@
 cargo install cargo-watch
 cargo install evcxr_repl
 cargo install fd-find
+cargo install ripgrep
 
 #cargo install crowbook
 mkdir -p ~/.local/share/bash-completion/completions
