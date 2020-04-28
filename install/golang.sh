@@ -8,7 +8,7 @@ success() {
     echo ">>> SUCCESS: $1 $2 installed!"
 }
 
-gover="1.14"
+gover="1.14.2"
 ostypes="$(uname -s)"
 
 function InstallGo() {
