@@ -10,9 +10,20 @@ success() {
 
 gover="1.14.2"
 ostypes="$(uname -s)"
+if [[ -f ~/sdk/go/bin/go ]]; then
+    current_gover="$(go version|awk '{print $3}'|sed 's/go//')"
+fi
 
+if [[ ${current_gover} > ${gover} ]]; then
+    echo "The current version ${current_gover} is newer than what you will install ${gover}"
+    exit 1
+fi
+if [[ ${current_gover} == ${gover} ]]; then
+    echo "already has equal go version."
+    exit 1
+fi
 function InstallGo() {
-    echo ">>> Found $ostypes} OS ..."
+    echo ">>> Found $ostypes OS ..."
     if [[ ! -d ~/sdk ]]; then
         mkdir -p ~/sdk
     fi
