@@ -19,7 +19,7 @@ if [[ ${current_gover} > ${gover} ]]; then
     exit 1
 fi
 if [[ ${current_gover} == ${gover} ]]; then
-    echo "already has equal go version."
+    echo "already has equally go version."
     exit 1
 fi
 function InstallGo() {
