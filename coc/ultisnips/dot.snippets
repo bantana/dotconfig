@@ -41,22 +41,18 @@ digraph struct {
 rankdir=LR;
 node [shape=record]; 
 
-s [shape=record,label="{<name> name|<value> value}|{<ptr> ptr|<vptr> }|{<len> len|<vlen> 10}|{<capacity> capacity|<vcap> 10}"];
-world [shape=record,label="{<name> name|<value> value}|{<ptr> ptr|<vptr>}|{<len> len|<vlen> 5}"];
-memory [shape=record,label="
-<index> index|
-<0> 0 |
-<1> 1 |
-<2> 2 |
-<3> 3 |
-<4> 4 |
-<5> 5 |
-<6> 6 |
-<7> 7 |
-<8> 8 |
-<9> 9 |
-<10> 10
-"];
+	s [shape=record,label="{<name> name|<value> value}|{<ptr> ptr|<vptr> }|{<len> len|<vlen> 10}|{<capacity> capacity|<vcap> 10}"];
+	world [shape=record,label="{<name> name|<value> value}|{<ptr> ptr|<vptr>}|{<len> len|<vlen> 5}"];
+	memory [shape=record,label="
+		<index> index|
+		<0> 0 |
+		<1> 1 |
+		<2> 2 |
+		<3> 3 |
+		<4> 4 |
+		<5> 5 |
+		<6> 6 
+	"];
 
 s:vptr -> memory:0;
 world:vptr -> memory:5;
