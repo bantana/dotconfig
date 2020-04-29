@@ -586,6 +586,7 @@ set complete+=kspell
 
 " Nerdtree {{{
 map <leader>n :NERDTreeToggle<cr>
+map <leader>nn :NERDTree %<cr>
 let NERDTreeIgnore=['node_modules']
 " autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 " }}}
@@ -666,12 +667,4 @@ nmap <leader>l :bn<cr>
 set hidden
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_insert_paren = 1
-augroup Racer
-    autocmd!
-    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
-    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
-    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
-    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
-    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
-augroup END
 " }}}
