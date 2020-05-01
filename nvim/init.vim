@@ -668,3 +668,6 @@ set hidden
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_insert_paren = 1
 " }}}
+"
+set autoread
+au FocusGained,BufEnter * :checktime
