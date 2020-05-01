@@ -24,7 +24,8 @@ set -o vi
 export LANG="en_US.UTF-8"
 export LC_CTYPE=${LANG}
 export LC_ALL=${LANG}
-export EDITOR="vim"
+export VISUAL="nvim";
+export EDITOR="nvim"
 [[ -d ~/.npm-global ]] && PATH=~/.npm-global/bin:$PATH
 # proxy.sh
 [[ -f ~/.config/functions/functions.sh ]] && source ~/.config/functions/functions.sh
