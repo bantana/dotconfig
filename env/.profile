@@ -66,7 +66,6 @@ fi
 # rust bin
 if [[ -f "$HOME/.cargo/env" ]]; then
     source "$HOME/.cargo/env"
-    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
