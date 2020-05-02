@@ -35,6 +35,19 @@ function myip() {
     fi
 }
 
+function whichport() {
+    if [[ -z $1 ]]; then
+        echo "Usage: whichport \$processname" 
+        return 1
+    fi
+    if [[ $(uname -s) == "Darwin" ]]; then
+        lsof -i -P -n | grep LISTEN|grep $1
+    fi
+    if [[ $(uname -s) == "Linux" ]]; then
+        sudo lsof -i -P -n | grep LISTEN|grep $1
+    fi
+}
+
 function lxchost() {
     ssh "$(lxc list | grep -i "$1" | awk '{print $6}')"
 }
