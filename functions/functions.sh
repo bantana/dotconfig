@@ -41,10 +41,10 @@ function whichport() {
         return 1
     fi
     if [[ $(uname -s) == "Darwin" ]]; then
-        lsof -i -P -n | grep LISTEN|grep $1 | awk '{print $2}'
+        lsof -i -P -n | grep LISTEN|grep $1 | head -1 | awk '{print $2}'
     fi
     if [[ $(uname -s) == "Linux" ]]; then
-        sudo lsof -i -P -n | grep LISTEN|grep $1 | awk '{print $2}'
+        sudo lsof -i -P -n | grep LISTEN|grep $1| head -1 | awk '{print $2}'
     fi
 }
 
@@ -53,7 +53,7 @@ function topstat() {
     if [[ $length -gt 10 ]]; then
         echo "process name length use first 9 characters"
     fi
-    top -H -p $(whichport $1)
+    top -pid $(whichport $1)
 }
 
 function lxchost() {
