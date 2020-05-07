@@ -28,8 +28,10 @@ return ${1};
 ${0}
 endsnippet
 snippet vec! "vec![,,,]" A
-vec![${1}];${2}
-${0}
+vec![${1}]${0}
+endsnippet
+snippet panic! "panic!(...);" A
+panic!("$1"${2/..*/, /}$2)${0}
 endsnippet
 snippet fnm "fn main() {}" A
 fn main() {
