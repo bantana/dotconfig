@@ -672,3 +672,8 @@ let g:racer_insert_paren = 1
 "
 set autoread
 au FocusGained,BufEnter * :checktime
+
+" " scala {{{
+" au BufRead,BufNewFile *.sbt set filetype=scala
+" autocmd FileType json syntax match Comment +\/\/.\+$+
+" " }}}
