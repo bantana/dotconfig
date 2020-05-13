@@ -144,14 +144,14 @@
             "filetypes": ["sh"],
             "ignoredRootPaths": ["~"]
         },
-        // "swift": {
-        //     //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
-        //     "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
-        //     "args": [],
-        //     "filetypes": ["swift"],
-        //     "initializationOptions": {},
-        //     "settings": {}
-        // },
+        "swift": {
+            //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
+            "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
+            "args": [],
+            "filetypes": ["swift"],
+            "initializationOptions": {},
+            "settings": {}
+        },
         "julia": {
             "command": "/usr/local/bin/julia",
             "args": [

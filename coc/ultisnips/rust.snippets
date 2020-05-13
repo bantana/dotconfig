@@ -77,3 +77,19 @@ struct Opt {
 	speed: f64,
 }
 endsnippet
+snippet implIterator "impl Iterator for .. {}" b
+impl Iterator for ${1} {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.${2} += 1;
+
+        if self.${2} < ${3} {
+            Some(self.${2})
+        } else {
+            None
+        }
+    }
+}
+${0}
+endsnippet
