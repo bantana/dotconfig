@@ -106,4 +106,14 @@ if [ -f ~/.fzf/bin/fzf ]; then
     fi
 fi
 
+# Deno was installed successfully to /home/bantana/.deno/bin/deno
+# Manually add the directory to your $HOME/.bash_profile (or similar)
+if [[ -d "$HOME/.deno/bin" ]]; then
+  export DENO_INSTALL="/home/bantana/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+# Run '/home/bantana/.deno/bin/deno --help' to get started
+fi
+
 export GPG_TTY=$(tty)
+
+
