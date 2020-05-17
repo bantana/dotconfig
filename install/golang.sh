@@ -8,7 +8,7 @@ success() {
     echo ">>> SUCCESS: $1 $2 installed!"
 }
 
-gover="1.14.2"
+gover="1.14.3"
 ostypes="$(uname -s)"
 if [[ -f ~/sdk/go/bin/go ]]; then
     current_gover="$(go version|awk '{print $3}'|sed 's/go//')"

@@ -44,8 +44,7 @@
     "translator.toLang": "zh",
     "translator.engines": [
         "google",
-        "bing",
-        "ciba"
+        "bing"
     ],
 
     "javascript.suggestionActions.enabled": false,
