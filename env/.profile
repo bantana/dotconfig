@@ -114,6 +114,10 @@ if [[ -d "$HOME/.deno/bin" ]]; then
 # Run '/home/bantana/.deno/bin/deno --help' to get started
 fi
 
-export GPG_TTY=$(tty)
+# haskell cabal
+if [[ -d "$HOME/.cabal/bin" ]]; then
+  export PATH="$HOME/.cabal/bin:$PATH"
+fi
 
+export GPG_TTY=$(tty)
 
