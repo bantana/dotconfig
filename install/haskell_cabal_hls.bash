@@ -17,6 +17,11 @@ if [[ $(uname -s) == "Linux" ]]; then
     make
     make install
 
+    mkdir -p cabal_update
+    cd cabal_update
+    cabal update
+    cd ..
+
     git clone git@github.com:haskell/haskell-language-server.git
     cd haskell-language-server
     ./cabal-hls-install hls
