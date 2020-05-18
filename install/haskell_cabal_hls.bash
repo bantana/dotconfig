@@ -17,6 +17,13 @@ if [[ $(uname -s) == "Linux" ]]; then
     make
     make install
 
+    # in china
+    sed -i 's/repository hackage.haskell.org/repository mirrors.tuna.tsinghua.edu.cn/' ~/.cabal/config
+    sed -i 's/url: http:\/\/hackage.haskell.org/url: http:\/\/mirrors.tuna.tsinghua.edu.cn\/hackage/' ~/.cabal/config
+    sed -i 's/  -- secure: True/--  -- secure: True/' ~/.cabal/config
+    sed -i 's/  -- root-keys:/--  -- root-keys:/' ~/.cabal/config
+    sed -i 's/  -- key-threshold: 3/--  -- key-threshold: 3/' ~/.cabal/config
+
     mkdir -p cabal_update
     cd cabal_update
     cabal update
@@ -28,6 +35,13 @@ if [[ $(uname -s) == "Linux" ]]; then
 fi
 if [[ $(uname -s) == "Darwin" ]]; then
     brew install ghc cabal-install
+
+    # in china
+    sed -i '' -e 's/repository hackage.haskell.org/repository mirrors.tuna.tsinghua.edu.cn/' ~/.cabal/config
+    sed -i '' -e 's/url: http:\/\/hackage.haskell.org/url: http:\/\/mirrors.tuna.tsinghua.edu.cn\/hackage/' ~/.cabal/config
+    sed -i '' -e 's/  -- secure: True/--  -- secure: True/' ~/.cabal/config
+    sed -i '' -e 's/  -- root-keys:/--  -- root-keys:/' ~/.cabal/config
+    sed -i '' -e 's/  -- key-threshold: 3/--  -- key-threshold: 3/' ~/.cabal/config
 
     mkdir -p ~/tmp/haskell
     cd ~/tmp/haskell
