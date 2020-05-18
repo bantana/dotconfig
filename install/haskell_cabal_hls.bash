@@ -7,6 +7,9 @@ if [[ $(uname -s) == "Linux" ]]; then
     tar -xf cabal-install-3.2.0.0-x86_64-unknown-linux.tar.xz
     mv cabal /usr/local/bin/cabal
 
+    ## forgot ?
+    # cabal update
+
     wget -c https://downloads.haskell.org/~ghc/8.10.1/ghc-8.10.1-x86_64-deb10-linux.tar.xz
     tar -xf ghc-8.10.1-x86_64-deb10-linux.tar.xz
     cd ghc-8.10.1/
