@@ -20,10 +20,30 @@ if [[ $(uname -s) == "Linux" ]]; then
     git clone git@github.com:haskell/haskell-language-server.git
     cd haskell-language-server
     ./cabal-hls-install hls
-
-## ~/.profile
-# # haskell cabal
-# if [[ -d "$HOME/.cabal/bin" ]]; then
-#   export PATH="$HOME/.cabal/bin:$PATH"
-# fi
 fi
+if [[ $(uname -s) == "Darwin" ]]; then
+    brew install ghc cabal-install
+
+    mkdir -p ~/tmp/haskell
+    cd ~/tmp/haskell
+    git clone git@github.com:haskell/haskell-language-server.git
+    cd haskell-language-server
+    ./cabal-hls-install hls
+fi
+
+cat <<Endofmessage
+-------------------------------------
+# ~/.profile or ~/.bash_profile
+# haskell cabal
+if [[ -d "\$HOME/.cabal/bin" ]]; then
+  export PATH="\$HOME/.cabal/bin:\$PATH"
+fi
+-------------------------------------
+Endofmessage
+
+cat <<Cleanmessage
+-------------------------------------
+# ~/tmp/haskell maybe need clean
+rm -r ~/tmp/haskell
+-------------------------------------
+Cleanmessage
