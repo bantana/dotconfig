@@ -128,4 +128,9 @@ if [ -f ~/.fzf/bin/fzf ]; then
     fi
 fi
 
+# haskell cabal
+if [[ -d "$HOME/.cabal/bin" ]]; then
+  export PATH="$HOME/.cabal/bin:$PATH"
+fi
+
 export GPG_TTY=$(tty)
