@@ -50,10 +50,10 @@ function whichport() {
 
 function topstat() {
     local length=`expr length "$1"`
-    if [[ $length -gt 10 ]]; then
+    if [[ $length -gt 9 ]]; then
         echo "process name length use first 9 characters"
     fi
-    top -pid $(whichport $1)
+    top -p $(whichport $1)
 }
 
 function lxchost() {

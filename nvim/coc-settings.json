@@ -44,7 +44,9 @@
     "translator.toLang": "zh",
     "translator.engines": [
         "google",
-        "bing"
+        "bing",
+        "youdao",
+        "haici"
     ],
 
     "javascript.suggestionActions.enabled": false,
