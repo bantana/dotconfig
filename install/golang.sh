@@ -8,10 +8,13 @@ success() {
     echo ">>> SUCCESS: $1 $2 installed!"
 }
 
-gover="1.14.3"
+# gover="1.14.4"
+gover=`curl --silent https://golang.org/doc/devel/release.html | grep -Eo 'go[0-9]+(\.[0-9]+)+' | sort -V | uniq | tail -1|sed 's/go//'`
+echo "found the lastet version ${gover}"
 ostypes="$(uname -s)"
 if [[ -f ~/sdk/go/bin/go ]]; then
     current_gover="$(go version|awk '{print $3}'|sed 's/go//')"
+    echo "local current go version ${current_gover}"
 fi
 
 if [[ ${current_gover} > ${gover} ]]; then
