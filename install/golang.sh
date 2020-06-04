@@ -51,10 +51,9 @@ function InstallGo() {
         exit 1
     fi
     success Golang ${gover}
-    exit 0
     unset ostypes
     unset gover
-
+    exit 0
 }
 
 InstallGo
