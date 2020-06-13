@@ -9,7 +9,7 @@ success() {
 }
 
 # gover="1.14.4"
-gover=`curl --silent https://golang.org/doc/devel/release.html | grep -Eo 'go[0-9]+(\.[0-9]+)+' | sort -V | uniq | tail -1|sed 's/go//'`
+gover=$(curl --silent https://golang.org/doc/devel/release.html | grep -Eo 'go[0-9]+(\.[0-9]+)+' | sort -V | uniq | tail -1|sed 's/go//')
 echo "found the lastet version ${gover}"
 ostypes="$(uname -s)"
 if [[ -f ~/sdk/go/bin/go ]]; then
@@ -21,7 +21,7 @@ if [[ ${current_gover} > ${gover} ]]; then
     echo "The current version ${current_gover} is newer than what you will install ${gover}"
     exit 1
 fi
-if [[ ${current_gover} == ${gover} ]]; then
+if [ "${current_gover}" == "${gover}" ]; then
     echo "already has equally go version."
     exit 1
 fi
@@ -50,7 +50,7 @@ function InstallGo() {
         err "golang install failed!"
         exit 1
     fi
-    success Golang ${gover}
+    success Golang "${gover}"
     unset ostypes
     unset gover
     exit 0
