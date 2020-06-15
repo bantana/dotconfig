@@ -12,7 +12,7 @@ function proxy() {
         export HTTP_PROXY="http://127.0.0.1:2000"
     fi
     if [[ $(uname -s) == "Linux" ]]; then
-        export HTTP_PROXY="http://192.168.64.1:2000"
+        export HTTP_PROXY="${proxy}"
     fi
     export HTTPS_PROXY=$HTTP_PROXY
     export NO_PROXY="127.0.0.1, localhost, *.local, 192.168.64/24, 169.254/16, registry.npmjs.com"

@@ -10,7 +10,9 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     if [[ "$(lsb_release -is)" == "Ubuntu" ]]; then
         echo ">>> Found Ubuntu OS"
 	#sudo curl -x $HTTP_PROXY -L "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage" -o /usr/local/bin/nvim && sudo chmod +x /usr/local/bin/nvim
-	source ~/.profile  && proxy 
+	if $HTTP_PROXY; then
+		source ~/.profile  && proxy 
+	fi
     if [[ -n "$HTTP_PROXY" ]]; then
 	    sudo curl -x $HTTP_PROXY -L "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -o /usr/local/bin/nvim && sudo chmod +x /usr/local/bin/nvim
     else

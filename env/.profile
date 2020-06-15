@@ -121,3 +121,4 @@ fi
 
 export GPG_TTY=$(tty)
 
+export proxy="http://127.0.0.1:2000"
