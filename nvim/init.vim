@@ -174,6 +174,8 @@ let g:coc_global_extensions = [
             \ 'coc-vimlsp',
             \ 'coc-clangd',
             \ 'coc-translator',
+            \ 'coc-rls',
+            \ 'coc-rust-analyzer',
             \ ]
 " }}}
 

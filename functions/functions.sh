@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
+function cleancargo() {
+    local current_dir="$(pwd)"
+
+    if [[ "$#" -ne 1 ]]; then
+        echo "Usage: ${FUNCNAME[0]} \$path"
+        return 1
+    fi
+
+    local result=`find $1 -type d -name target|xargs --no-run-if-empty -I{} echo 'cd '$current_dir'/{}/.. && cargo clean -v;'`
+    if [[ -z "$result" ]]; then
+        echo "not found cargo build target directories, not need run cargo clean"
+        return 1
+    fi
+    echo $result|bash -
+    unset current_dir
+    unset result
+    echo "cleaned done!"
+}
+
 function checkenv() {
     command printenv PATH | sed 's/:/\n/g' | sort | uniq -c
 }
+
 function mkcd() {
     command mkdir "$1" && cd "$_" || return
 }
