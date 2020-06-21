@@ -5,7 +5,8 @@ if [[ -d "$HOME/.config" ]]; then
     exit 1
 else
     echo "git clone remote .config"
-    git clone git@github.com:bantana/dotconfig.git ~/.config
+#    git clone git@github.com:bantana/dotconfig.git ~/.config
+    git clone https://github.com/bantana/dotconfig.git ~/.config
     if [[ $? -ne 0 ]]; then
         echo "ERROR>>> error code: $?, git clone failed!"
         exit 1
