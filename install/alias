@@ -10,5 +10,6 @@ alias canary="open /Applications/Google\ Chrome\ Canary.app"
 
 function google() { open  -a /Applications/Google\ Chrome\ Canary.app/ "http://www.google.com/search?q= $1"; }
 
-# alias pip='pip3'
+alias pip='pip3'
 alias nets='netstat -AaLlnW'
+alias swiftformat="/usr/local/bin/swiftformat --indent 4"

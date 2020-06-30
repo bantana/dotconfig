@@ -62,7 +62,8 @@ Plug 'rhysd/vim-clang-format'
 Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'bantana/swift'
+Plug 'bluk/swifty-vim'
+" Plug 'bantana/swift'
 call plug#end()
 " }}}
 
@@ -660,7 +661,9 @@ let g:ale_linters_ignore = {'c': ['gcc']}
 " " }}}
 "
 highlight link CocErrorSign GruvboxRed
-nnoremap <leader>m :!swiftformat --swiftversion 5 % --quiet<cr>:bufdo :e!<cr>
+" nnoremap <leader>m :!swiftformat --swiftversion 5 % --quiet<cr>:bufdo :e!<cr>
+nnoremap <leader>m :!swift-format -i %<cr>:bufdo :e!<cr>
+au BufWritePre,FileWritePre *.swift :SwiftFormat<cr>
 
 autocmd BufNewFile,BufRead *.toml set ft=cfg
 nmap <leader>l :bn<cr>
@@ -679,3 +682,4 @@ au FocusGained,BufEnter * :checktime
 " au BufRead,BufNewFile *.sbt set filetype=scala
 " autocmd FileType json syntax match Comment +\/\/.\+$+
 " " }}}
+"

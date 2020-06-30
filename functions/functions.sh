@@ -18,6 +18,27 @@ function cleancargo() {
     echo "cleaned done!"
 }
 
+function cleanswift() {
+    local current_dir="$(pwd)"
+
+    if [[ "$#" -ne 1 ]]; then
+        echo "Usage: ${FUNCNAME[0]} \$path"
+        return 1
+    fi
+
+    # local result=`find $1 -type d -name .build|xargs --no-run-if-empty -I{} echo 'cd '$current_dir'/{}/.. && swift package clean;'`
+    local result=`find $1 -type d -name .build|xargs --no-run-if-empty -I{} echo 'rm -rf '$current_dir'/{}/../.build && echo "removed '$current_dir'/{}/../.build";'`
+    if [[ -z "$result" ]]; then
+        echo "not found swift build target directories, not need run swift package clean"
+        return 1
+    fi
+    echo $result|bash -E 
+
+    unset current_dir
+    unset result
+    echo "cleaned done!"
+}
+
 function checkenv() {
     command printenv PATH | sed 's/:/\n/g' | sort | uniq -c
 }
