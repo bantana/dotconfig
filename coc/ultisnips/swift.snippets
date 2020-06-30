@@ -102,17 +102,16 @@ snippet fixme "Fixme"
 // FIXME: 
 endsnippet
 
-snippet fu "func"
-func ${1:doSomething<Value>}(${2:with value: Value})`!p print_unless_empty(" ", 3)`${3:throw}`!p print_unless_empty(" -> ", 4)`${4:Result}`!p print_unless_empty(" where ", 5)`${5:`!p print_if_generics(": ConformsTo", 1)`} {
-	$0
+snippet fn "func name(?) -> ? {}"
+func ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
 }
 endsnippet
 
-snippet func "func" A
-func ${1:}(${2}) ${3} {
-    ${4}
+snippet func> "func name(?) -> ? {}" A
+func ${1:function_name}($2)${3/..*/ -> /}$3 {
+	${VISUAL}$0
 }
-${0}
 endsnippet
 
 snippet if "if"
@@ -185,11 +184,14 @@ subscript(${1:index: Int}) -> ${2:Value} {
 }
 endsnippet
 
-snippet sw "switch"
+snippet sw! "switch" A
 switch ${1:value} {
 case ${2:pattern}:
-	$0
+	${3}
+default:
+	${4}
 }
+$0
 endsnippet
 
 snippet todo "Todo"
