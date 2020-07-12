@@ -683,3 +683,7 @@ au FocusGained,BufEnter * :checktime
 " autocmd FileType json syntax match Comment +\/\/.\+$+
 " " }}}
 let g:swift_version_check = 0
+" shortkey usage {{{
+" Move the current window to L|H|J|K
+" Ctrl-w + L[H|J|K]
+" }}}

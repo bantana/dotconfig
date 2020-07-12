@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # TODO:  <16-03-20, bantana> #
 echo "installing now ..."
-# curl -sL https://raw.githubusercontent.com/bantana/dotconfig/develop/install/install | bash
+# curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/bantana/dotconfig/develop/install/install | bash -E
 
 if [[ -d "$HOME/.config" ]]; then
     echo "directory .config is exist, you must manually backup .config directory."
     exit 1
 else
     echo "git clone remote .config"
-    git clone -b develop git@github.com:bantana/dotconfig.git ~/.config
+    git clone -b develop https://github.com/bantana/dotconfig.git ~/.config
     if [[ $? -ne 0 ]]; then
         echo "ERROR>>> error code: $?, git clone failed!"
         exit 1
