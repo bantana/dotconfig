@@ -136,3 +136,4 @@ if [[ -d "$HOME/.cabal/bin" ]]; then
 fi
 
 export GPG_TTY=$(tty)
+export PATH="/usr/local/sbin:$PATH"

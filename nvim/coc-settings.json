@@ -11,7 +11,8 @@
             "args": ["-i", "2", "-bn", "-ci", "-sr"]
         }
     },
-    "sourcekit.commandPath": "/usr/share/swift/usr/bin/sourcekit-lsp",
+    // "sourcekit.commandPath": "/usr/share/swift/usr/bin/sourcekit-lsp",
+    "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
     "suggest.triggerAfterInsertEnter": false,
     "suggest.timeout": 2000,
     "suggest.noselect": true,
@@ -147,7 +148,8 @@
         },
         "swift": {
             //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
-            "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
+            // "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
+            "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
             "args": [],
             "filetypes": ["swift"],
             "initializationOptions": {},

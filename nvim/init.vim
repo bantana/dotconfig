@@ -682,4 +682,4 @@ au FocusGained,BufEnter * :checktime
 " au BufRead,BufNewFile *.sbt set filetype=scala
 " autocmd FileType json syntax match Comment +\/\/.\+$+
 " " }}}
-"
+let g:swift_version_check = 0
