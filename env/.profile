@@ -34,7 +34,6 @@ export proxy="http://127.0.0.1:2000"
 # golang env
 [[ -f ~/.config/install/golang.env ]] && source ~/.config/install/golang.env
 
-
 if [[ "$(uname -s)" == "Darwin" ]]; then
     PATH="/usr/local/opt/node@10/bin:$PATH"
 fi
@@ -102,7 +101,7 @@ fi
 
 if [ -f ~/.fzf/bin/fzf ]; then
     if [ -f ~/.cargo/bin/fd ]; then
-        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git -E node_modules'
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     fi
 fi

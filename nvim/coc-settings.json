@@ -31,6 +31,7 @@
     "prettier.stylelintIntegration": true,
     "emmet.includeLanguages": {
         "vue-html": "html",
+        "vue": "html",
         "javascript": "javascriptreact"
     },
     "rust.rustfmt_path": "~/.cargo/bin/rustfmt",

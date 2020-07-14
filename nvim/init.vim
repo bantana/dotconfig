@@ -21,6 +21,7 @@ endfunction
 " Specify a directory for plugins ( for Neovim: ~/.config/nvim/plugged ) {{{
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
+Plug 'tomasiser/vim-code-dark'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rbgrouleff/bclose.vim'
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -72,6 +73,7 @@ call plug#end()
 " set termguicolors
 " set background=dark
 " hi Search term=reverse cterm=reverse gui=reverse ctermfg=237
+" colorscheme codedark
 colorscheme gruvbox
 " }}}
 
@@ -687,3 +689,4 @@ let g:swift_version_check = 0
 " Move the current window to L|H|J|K
 " Ctrl-w + L[H|J|K]
 " }}}
+"
