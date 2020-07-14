@@ -26,6 +26,7 @@ export LC_CTYPE=${LANG}
 export LC_ALL=${LANG}
 export VISUAL="nvim";
 export EDITOR="nvim"
+export proxy="http://127.0.0.1:2000"
 [[ -d ~/.npm-global ]] && PATH=~/.npm-global/bin:$PATH
 # proxy.sh
 [[ -f ~/.config/functions/functions.sh ]] && source ~/.config/functions/functions.sh
@@ -121,4 +122,3 @@ fi
 
 export GPG_TTY=$(tty)
 
-export proxy="http://127.0.0.1:2000"
