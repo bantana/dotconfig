@@ -9,7 +9,11 @@ success() {
 }
 
 # gover="1.14.4"
-gover=$(curl --silent https://golang.org/doc/devel/release.html | grep -Eo 'go[0-9]+(\.[0-9]+)+' | sort -V | uniq | tail -1|sed 's/go//')
+if [ "$1" != "" ]; then
+    gover="$1"
+else
+    gover=$(curl --silent https://golang.org/doc/devel/release.html | grep -Eo 'go[0-9]+(\.[0-9]+)+' | sort -V | uniq | tail -1|sed 's/go//')
+fi
 echo "found the lastet version ${gover}"
 ostypes="$(uname -s)"
 if [[ -f ~/sdk/go/bin/go ]]; then
@@ -48,6 +52,8 @@ function InstallGo() {
     curl -s https://dl.google.com/go/go"${gover}.${ostypes,}"-amd64.tar.gz | tar xzv -C ~/sdk/
     if [[ $? -ne 0 ]]; then
         err "golang install failed!"
+        echo "==================================="
+        echo "try to Usage: bash golang.sh 1.14.4"
         exit 1
     fi
     success Golang "${gover}"

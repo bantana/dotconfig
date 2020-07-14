@@ -53,6 +53,8 @@
   lastid = "!git log --format="%h" -n 1"
   issue = !/usr/local/bin/git-issue
   ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+  rlog = "log --reverse"
+
 [credential]
 	helper = store
 [diff]
@@ -69,16 +71,14 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[http]
-# proxy = socks5://127.0.0.1:1080
-[https]
-#  proxy = socks5://127.0.0.1:1080
-# [url "ssh://git@radevio.com"]
-# 	insteadof = https://radevio.com
+# [http]
+#     proxy = socks5://127.0.0.1:1080
+# [https]
+#     proxy = socks5://127.0.0.1:1080
 # [url "ssh://git@github.com"]
 # 	insteadof = https://github.com
-[url "ssh://git@iohttps.com"]
-	insteadOf = https://iohttps.com
+# [url "ssh://git@iohttps.com"]
+# 	insteadOf = https://iohttps.com
 # # Proxy settings
 # [core]
 # 	gitProxy="ssh" for "kernel.org"
