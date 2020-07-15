@@ -63,18 +63,18 @@ fi
 #  export GROOVY_HOME=/usr/local/opt/groovy/libexec
 #fi
 
-## build fuchsia
-if [[ -d ~/fuchsia ]]; then
- export FUCHSIA_DIR=$HOME/fuchsia
-fi
-# fuchsia compile jiri env
-if [[ -d $FUCHSIA_DIR/.jiri_root/bin ]]; then
- PATH=$PATH:$FUCHSIA_DIR/scripts:$FUCHSIA_DIR/.jiri_root/bin
-fi
-
-if [[ -f $FUCHSIA_DIR/scripts/fx-env.sh ]]; then
- source $FUCHSIA_DIR/scripts/fx-env.sh
-fi
+# ## build fuchsia
+# if [[ -d ~/fuchsia ]]; then
+#  export FUCHSIA_DIR=$HOME/fuchsia
+# fi
+# # fuchsia compile jiri env
+# if [[ -d $FUCHSIA_DIR/.jiri_root/bin ]]; then
+#  PATH=$PATH:$FUCHSIA_DIR/scripts:$FUCHSIA_DIR/.jiri_root/bin
+# fi
+#
+# if [[ -f $FUCHSIA_DIR/scripts/fx-env.sh ]]; then
+#  source $FUCHSIA_DIR/scripts/fx-env.sh
+# fi
 
 # llvm clangd
 if [[ -d /usr/local/opt/llvm/bin ]]; then
@@ -125,7 +125,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ -f ~/.fzf/bin/fzf ]; then
     if [ -f ~/.cargo/bin/fd ]; then
-        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git -E node_modules'
         export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     fi
 fi

@@ -109,11 +109,16 @@ func ${1:function_name}($2)${3/..*/ -> /}$3 {
 endsnippet
 
 snippet func> "func name(?) -> ? {}" A
-func ${1:function_name}($2)${3/..*/ -> /}$3 {
+func ${1:function_name}($2) ${3/..*/ -> /}$3 {
 	${VISUAL}$0
 }
 endsnippet
 
+snippet funct> "func name(?) throws -> ? {}" A
+func ${1:function_name}($2) throws -> String {
+	${VISUAL}$0
+}
+endsnippet
 snippet if "if"
 if ${1:condition} {
 	$0
