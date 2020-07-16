@@ -56,7 +56,8 @@
 
     "coc.preferences.formatOnSaveFiletypes": [
         "rust",
-        "dart"
+        "dart",
+        "typescript"
     ],
     "flutter.enabled": true,
     "flutter.provider.hot-reload": true,

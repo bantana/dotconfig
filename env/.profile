@@ -27,19 +27,31 @@ export LC_ALL=${LANG}
 export VISUAL="nvim";
 export EDITOR="nvim"
 export proxy="http://127.0.0.1:2000"
-[[ -d ~/.npm-global ]] && PATH=~/.npm-global/bin:$PATH
-# proxy.sh
-[[ -f ~/.config/functions/functions.sh ]] && source ~/.config/functions/functions.sh
-[[ -f ~/.config/install/alias ]] && source ~/.config/install/alias
-# golang env
-[[ -f ~/.config/install/golang.env ]] && source ~/.config/install/golang.env
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    PATH="/usr/local/opt/node@10/bin:$PATH"
+if [ -d ~/.npm-global ]; then 
+    PATH=~/.npm-global/bin:$PATH
+fi
+# proxy.sh
+if [ -f ~/.config/functions/functions.sh ]; then
+    source ~/.config/functions/functions.sh
 fi
 
+if [ -f ~/.config/functions/functions.sh ]; then
+    source ~/.config/functions/functions.sh
+fi
+if [ -f ~/.config/install/alias ]; then
+    source ~/.config/install/alias
+fi
+
+# golang env
+if [ -f ~/.config/install/golang.env ]; then
+    source ~/.config/install/golang.env
+fi
+if [ "$(uname -s)" == "Darwin" ]; then
+    PATH="/usr/local/opt/node@12/bin:$PATH"
+fi
 # dart env
-if [[ -d "/usr/lib/dart/bin" ]]; then
+if [ -d "/usr/lib/dart/bin" ]; then
     PATH="$PATH:/usr/lib/dart/bin"
 fi
 # dart language pub env
@@ -48,23 +60,23 @@ if [ -d ~/.pub-cache/bin ]; then
   export PATH="$PATH:$PUB_BIN"
 fi
 
-# flutter on china
-if [ -f ~/flutter/bin/flutter ]; then
-    export FLUTTER_ROOT="$HOME/flutter"
-    export ENABLE_FLUTTER_DESKTOP=true
-    # export PUB_HOSTED_URL=https://pub.flutter-io.cn
-    # export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-    export PATH="$PATH:$HOME/flutter/bin"
-# else
-#     git clone -b beta https://github.com/flutter/flutter.git ~/flutter && source ~/.bash_profile
-fi
+# # flutter on china
+# if [ -f ~/flutter/bin/flutter ]; then
+#     export FLUTTER_ROOT="$HOME/flutter"
+#     export ENABLE_FLUTTER_DESKTOP=true
+#     # export PUB_HOSTED_URL=https://pub.flutter-io.cn
+#     # export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+#     export PATH="$PATH:$HOME/flutter/bin"
+# # else
+# #     git clone -b beta https://github.com/flutter/flutter.git ~/flutter && source ~/.bash_profile
+# fi
 
 # swift env
-if [[ -d "/usr/share/swift" ]]; then
+if [ -d "/usr/share/swift" ]; then
     PATH="$PATH:/usr/share/swift/usr/bin"
 fi
 # rust bin
-if [[ -f "$HOME/.cargo/env" ]]; then
+if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
 
@@ -79,7 +91,9 @@ if [ -d "$HOME/.config/bin" ] ; then
     PATH="$HOME/.config/bin:$PATH"
 fi
 
-[[ -d ~/bin ]] && PATH=$PATH:~/bin
+if [ -d ~/bin ]; then 
+    PATH=$PATH:~/bin
+fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
@@ -99,23 +113,21 @@ fi
 # fd-find
 # cargo install fd-find  or sudo apt install fd-find
 
-if [ -f ~/.fzf/bin/fzf ]; then
-    if [ -f ~/.cargo/bin/fd ]; then
-        export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git -E node_modules'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    fi
+if [ -f ~/.fzf/bin/fzf ] && [ -f ~/.cargo/bin/fd ]; then
+    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git -E node_modules'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
 # Deno was installed successfully to /home/bantana/.deno/bin/deno
 # Manually add the directory to your $HOME/.bash_profile (or similar)
-if [[ -d "$HOME/.deno/bin" ]]; then
+if [ -d "$HOME/.deno/bin" ]; then
   export DENO_INSTALL="/home/bantana/.deno"
   export PATH="$DENO_INSTALL/bin:$PATH"
 # Run '/home/bantana/.deno/bin/deno --help' to get started
 fi
 
 # haskell cabal
-if [[ -d "$HOME/.cabal/bin" ]]; then
+if [ -d "$HOME/.cabal/bin" ]; then
   export PATH="$HOME/.cabal/bin:$PATH"
 fi
 
