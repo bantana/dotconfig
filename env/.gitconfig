@@ -79,6 +79,8 @@
 # 	insteadof = https://github.com
 # [url "ssh://git@iohttps.com"]
 # 	insteadOf = https://iohttps.com
+# [url "ssh://git@repos.wgteach.com"]
+#     insteadOf = https://repos.wgteach.com
 # # Proxy settings
 # [core]
 # 	gitProxy="ssh" for "kernel.org"

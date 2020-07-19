@@ -113,7 +113,6 @@ export TERM="xterm-256color"
 
 export PATH
 
-export PATH="$HOME/.cargo/bin:$PATH"
 [[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"

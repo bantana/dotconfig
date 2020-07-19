@@ -12,7 +12,13 @@ npm i -g npm
 hash -r
 npm i -g yarn
 hash -r
-yarn global add typescript coc.nvim bash-language-server dockerfile-language-server-nodejs
+yarn global add \
+    typescript \
+    coc.nvim \
+    bash-language-server \
+    vite \
+    vls
+    # dockerfile-language-server-nodejs \
 
 # prettier
 # yarn global add prettier cause a bug, see ~/.npm-global/bin
