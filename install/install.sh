@@ -24,7 +24,7 @@ bash ./clangd.sh
 bash ./linuxtools.sh
 
 # install golang
-bash ./golang.sh
+bash ./go.bash
 
 # node@10
 bash ./node12.sh
