@@ -171,7 +171,6 @@ let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-yaml',
             \ 'coc-git',
-            \ 'coc-tsserver',
             \ 'coc-snippets',
             \ 'coc-pairs',
             \ 'coc-vimlsp',
@@ -262,13 +261,13 @@ nmap <leader>Rf <Plug>(coc-refactor)
 " xmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder.
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" augroup mygroup
+"     autocmd!
+"     " Setup formatexpr specified filetype(s).
+"     autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"     " Update signature help on jump placeholder.
+"     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -601,12 +600,12 @@ let g:ranger_map_keys = 0
 let g:NERDTreeHijackNetrw = 0 "// add this line if you use NERDTree
 let g:ranger_replace_netrw = 1 "// open ranger when vim open a directory
 " }}}
-" clang-format {{{
-let g:clang_format#command="clang-format"
-let g:clang_format#code_style="Mozilla"
-let g:clang_format#detect_style_file=1
-let g:clang_format#auto_format=1
-" }}}
+" " clang-format {{{
+" let g:clang_format#command="clang-format"
+" let g:clang_format#code_style="Mozilla"
+" let g:clang_format#detect_style_file=1
+" let g:clang_format#auto_format=1
+" " }}}
 " coc-cursors {{{
 " nmap <silent> <C-c> <Plug>(coc-cursors-position)
 " nmap <silent> <C-d> <Plug>(coc-cursors-word)

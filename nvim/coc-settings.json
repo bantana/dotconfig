@@ -34,12 +34,13 @@
         "vue": "html",
         "javascript": "javascriptreact"
     },
+    "tsserver.enable": false,
     "rust.rustfmt_path": "~/.cargo/bin/rustfmt",
     "rust.all_features": true,
     "rust.racer_completion": true,
     "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
     "python.autoComplete.addBrackets": true,
-    "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
+    "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact", "vue"],
     "eslint.autoFix": true,
     "eslint.autoFixOnSave": true,
 
@@ -57,7 +58,8 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "rust",
         "dart",
-        "typescript"
+        "typescript",
+        "vue"
     ],
     "flutter.enabled": true,
     "flutter.provider.hot-reload": true,
