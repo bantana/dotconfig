@@ -96,13 +96,13 @@
                 }
             }
         },
-        "vetur": {
-			"filetypes": ["vue"],
-			"command": "vls",
-			"configuration": {
-				"vetur.format.options.tabSize": 4
-			}
-		},
+        // "vetur": {
+		// 	"filetypes": ["vue"],
+		// 	"command": "vls",
+		// 	"configuration": {
+		// 		"vetur.format.options.tabSize": 4
+		// 	}
+		// },
         // // brew tap twlz0ne/homebrew-ccls && brew install ccls
         // "ccls": {
         //     "command": "ccls",

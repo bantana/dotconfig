@@ -16,7 +16,9 @@ yarn global add \
     typescript \
     coc.nvim \
     bash-language-server \
+    npm-check-updates \
     vite \
+    rollup \
     vls
     # dockerfile-language-server-nodejs \
 

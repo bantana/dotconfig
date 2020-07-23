@@ -123,6 +123,7 @@ set wrap
 " set textwidth=110 "80-width lines is for 1995"
 let &wrapmargin=&textwidth
 set formatoptions=qrn1
+autocmd Filetype vue setlocal ts=2 sw=2 expandtab
 " }}}
 
 " mapleader {{{
