@@ -179,6 +179,7 @@ let g:coc_global_extensions = [
             \ 'coc-translator',
             \ 'coc-rls',
             \ 'coc-rust-analyzer',
+            \ 'coc-prettier',
             \ ]
 " }}}
 
