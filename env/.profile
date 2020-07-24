@@ -131,5 +131,6 @@ if [ -d "$HOME/.cabal/bin" ]; then
   export PATH="$HOME/.cabal/bin:$PATH"
 fi
 
-export GPG_TTY=$(tty)
+readonly GPG_TTY=$(tty)
+export GPG_TTY
 

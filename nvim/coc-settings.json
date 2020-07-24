@@ -150,13 +150,13 @@
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"]
         },
-        // yarn global add bash-language-server
-        "bash": {
-            "command": "bash-language-server",
-            "args": ["start"],
-            "filetypes": ["sh"],
-            "ignoredRootPaths": ["~"]
-        },
+        // // yarn global add bash-language-server
+        // "bash": {
+        //     "command": "bash-language-server",
+        //     "args": ["start"],
+        //     "filetypes": ["sh"],
+        //     "ignoredRootPaths": ["~"]
+        // },
         "swift": {
             //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
             // "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
