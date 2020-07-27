@@ -1,38 +1,41 @@
 #!/usr/bin/env bash
 function cleancargo() {
-    local current_dir="$(pwd)"
+    local current_dir
+    current_dir="$(pwd)"
 
     if [[ "$#" -ne 1 ]]; then
         echo "Usage: ${FUNCNAME[0]} \$path"
         return 1
     fi
 
-    local result=`find $1 -type d -name target|xargs --no-run-if-empty -I{} echo 'cd '$current_dir'/{}/.. && cargo clean -v;'`
+    local result
+    result="$(find $1 -type d -name target|xargs --no-run-if-empty -I{} echo 'cd '$current_dir'/{}/.. && cargo clean -v;')"
     if [[ -z "$result" ]]; then
         echo "not found cargo build target directories, not need run cargo clean"
         return 1
     fi
-    echo $result|bash -
+    echo "$result"|bash -
     unset current_dir
     unset result
     echo "cleaned done!"
 }
 
 function cleanswift() {
-    local current_dir="$(pwd)"
+    local current_dir
+    current_dir="$(pwd)"
 
     if [[ "$#" -ne 1 ]]; then
         echo "Usage: ${FUNCNAME[0]} \$path"
         return 1
     fi
 
-    # local result=`find $1 -type d -name .build|xargs --no-run-if-empty -I{} echo 'cd '$current_dir'/{}/.. && swift package clean;'`
-    local result=`find $1 -type d -name .build|xargs --no-run-if-empty -I{} echo 'rm -rf '$current_dir'/{}/../.build && echo "removed '$current_dir'/{}/../.build";'`
+    local result
+    result="$(find $1 -type d -name .build|xargs --no-run-if-empty -I{} echo 'rm -rf '$current_dir'/{}/../.build && echo "removed '$current_dir'/{}/../.build";')"
     if [[ -z "$result" ]]; then
         echo "not found swift build target directories, not need run swift package clean"
         return 1
     fi
-    echo $result|bash -E 
+    echo "$result"|bash -E 
 
     unset current_dir
     unset result
@@ -53,7 +56,7 @@ function proxy() {
         export HTTP_PROXY="http://127.0.0.1:2000"
     fi
     if [[ $(uname -s) == "Linux" ]]; then
-        export HTTP_PROXY="${proxy}"
+        export HTTP_PROXY="${PROXY}"
     fi
     export HTTPS_PROXY=$HTTP_PROXY
     export NO_PROXY="127.0.0.1, localhost, *.local, 192.168.64/24, 169.254/16, registry.npmjs.com"
@@ -82,19 +85,21 @@ function whichport() {
         return 1
     fi
     if [[ $(uname -s) == "Darwin" ]]; then
-        lsof -i -P -n | grep LISTEN|grep $1 | head -1 | awk '{print $2}'
+        lsof -i -P -n | grep LISTEN|grep "$1" | head -1 | awk '{print $2}'
     fi
     if [[ $(uname -s) == "Linux" ]]; then
-        sudo lsof -i -P -n | grep LISTEN|grep $1| head -1 | awk '{print $2}'
+        sudo lsof -i -P -n | grep LISTEN|grep "$1"| head -1 | awk '{print $2}'
     fi
 }
 
 function topstat() {
-    local length=`expr length "$1"`
+    # length=$(expr length "$1")
+    local length
+    length=${#$1}
     if [[ $length -gt 9 ]]; then
         echo "process name length use first 9 characters"
     fi
-    top -p $(whichport $1)
+    top -p "$(whichport "$1")"
 }
 
 function lxchost() {
@@ -162,47 +167,47 @@ function register_clang_version {
     local priority=$2
 
     update-alternatives \
-        --install /usr/bin/llvm-config       llvm-config      /usr/bin/llvm-config-${version} ${priority} \
-        --slave   /usr/bin/llvm-ar           llvm-ar          /usr/bin/llvm-ar-${version} \
-        --slave   /usr/bin/llvm-as           llvm-as          /usr/bin/llvm-as-${version} \
-        --slave   /usr/bin/llvm-bcanalyzer   llvm-bcanalyzer  /usr/bin/llvm-bcanalyzer-${version} \
-        --slave   /usr/bin/llvm-cov          llvm-cov         /usr/bin/llvm-cov-${version} \
-        --slave   /usr/bin/llvm-diff         llvm-diff        /usr/bin/llvm-diff-${version} \
-        --slave   /usr/bin/llvm-dis          llvm-dis         /usr/bin/llvm-dis-${version} \
-        --slave   /usr/bin/llvm-dwarfdump    llvm-dwarfdump   /usr/bin/llvm-dwarfdump-${version} \
-        --slave   /usr/bin/llvm-extract      llvm-extract     /usr/bin/llvm-extract-${version} \
-        --slave   /usr/bin/llvm-link         llvm-link        /usr/bin/llvm-link-${version} \
-        --slave   /usr/bin/llvm-mc           llvm-mc          /usr/bin/llvm-mc-${version} \
-        --slave   /usr/bin/llvm-mcmarkup     llvm-mcmarkup    /usr/bin/llvm-mcmarkup-${version} \
-        --slave   /usr/bin/llvm-nm           llvm-nm          /usr/bin/llvm-nm-${version} \
-        --slave   /usr/bin/llvm-objdump      llvm-objdump     /usr/bin/llvm-objdump-${version} \
-        --slave   /usr/bin/llvm-ranlib       llvm-ranlib      /usr/bin/llvm-ranlib-${version} \
-        --slave   /usr/bin/llvm-readobj      llvm-readobj     /usr/bin/llvm-readobj-${version} \
-        --slave   /usr/bin/llvm-rtdyld       llvm-rtdyld      /usr/bin/llvm-rtdyld-${version} \
-        --slave   /usr/bin/llvm-size         llvm-size        /usr/bin/llvm-size-${version} \
-        --slave   /usr/bin/llvm-stress       llvm-stress      /usr/bin/llvm-stress-${version} \
-        --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-${version} \
-        --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-${version}
+        --install /usr/bin/llvm-config       llvm-config      /usr/bin/llvm-config-"${version} ${priority}" \
+        --slave   /usr/bin/llvm-ar           llvm-ar          /usr/bin/llvm-ar-"${version}" \
+        --slave   /usr/bin/llvm-as           llvm-as          /usr/bin/llvm-as-"${version}" \
+        --slave   /usr/bin/llvm-bcanalyzer   llvm-bcanalyzer  /usr/bin/llvm-bcanalyzer-"${version}" \
+        --slave   /usr/bin/llvm-cov          llvm-cov         /usr/bin/llvm-cov-"${version}" \
+        --slave   /usr/bin/llvm-diff         llvm-diff        /usr/bin/llvm-diff-"${version}" \
+        --slave   /usr/bin/llvm-dis          llvm-dis         /usr/bin/llvm-dis-"${version}" \
+        --slave   /usr/bin/llvm-dwarfdump    llvm-dwarfdump   /usr/bin/llvm-dwarfdump-"${version}" \
+        --slave   /usr/bin/llvm-extract      llvm-extract     /usr/bin/llvm-extract-"${version}" \
+        --slave   /usr/bin/llvm-link         llvm-link        /usr/bin/llvm-link-"${version}" \
+        --slave   /usr/bin/llvm-mc           llvm-mc          /usr/bin/llvm-mc-"${version}" \
+        --slave   /usr/bin/llvm-mcmarkup     llvm-mcmarkup    /usr/bin/llvm-mcmarkup-"${version}" \
+        --slave   /usr/bin/llvm-nm           llvm-nm          /usr/bin/llvm-nm-"${version}" \
+        --slave   /usr/bin/llvm-objdump      llvm-objdump     /usr/bin/llvm-objdump-"${version}" \
+        --slave   /usr/bin/llvm-ranlib       llvm-ranlib      /usr/bin/llvm-ranlib-"${version}" \
+        --slave   /usr/bin/llvm-readobj      llvm-readobj     /usr/bin/llvm-readobj-"${version}" \
+        --slave   /usr/bin/llvm-rtdyld       llvm-rtdyld      /usr/bin/llvm-rtdyld-"${version}" \
+        --slave   /usr/bin/llvm-size         llvm-size        /usr/bin/llvm-size-"${version}" \
+        --slave   /usr/bin/llvm-stress       llvm-stress      /usr/bin/llvm-stress-"${version}" \
+        --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-"${version}" \
+        --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-"${version}"
 
     update-alternatives \
-        --install /usr/bin/clang                 clang                 /usr/bin/clang-${version} ${priority} \
-        --slave   /usr/bin/clang++               clang++               /usr/bin/clang++-${version}  \
-        --slave   /usr/bin/asan_symbolize        asan_symbolize        /usr/bin/asan_symbolize-${version} \
-        --slave   /usr/bin/c-index-test          c-index-test          /usr/bin/c-index-test-${version} \
-        --slave   /usr/bin/clang-check           clang-check           /usr/bin/clang-check-${version} \
-        --slave   /usr/bin/clang-cl              clang-cl              /usr/bin/clang-cl-${version} \
-        --slave   /usr/bin/clang-cpp             clang-cpp             /usr/bin/clang-cpp-${version} \
-        --slave   /usr/bin/clang-format          clang-format          /usr/bin/clang-format-${version} \
-        --slave   /usr/bin/clang-format-diff     clang-format-diff     /usr/bin/clang-format-diff-${version} \
-        --slave   /usr/bin/clang-import-test     clang-import-test     /usr/bin/clang-import-test-${version} \
-        --slave   /usr/bin/clang-include-fixer   clang-include-fixer   /usr/bin/clang-include-fixer-${version} \
-        --slave   /usr/bin/clang-offload-bundler clang-offload-bundler /usr/bin/clang-offload-bundler-${version} \
-        --slave   /usr/bin/clang-query           clang-query           /usr/bin/clang-query-${version} \
-        --slave   /usr/bin/clang-rename          clang-rename          /usr/bin/clang-rename-${version} \
-        --slave   /usr/bin/clang-reorder-fields  clang-reorder-fields  /usr/bin/clang-reorder-fields-${version} \
-        --slave   /usr/bin/clang-tidy            clang-tidy            /usr/bin/clang-tidy-${version} \
-        --slave   /usr/bin/lldb                  lldb                  /usr/bin/lldb-${version} \
-        --slave   /usr/bin/lldb-server           lldb-server           /usr/bin/lldb-server-${version}
+        --install /usr/bin/clang                 clang                 /usr/bin/clang-"${version} ${priority}" \
+        --slave   /usr/bin/clang++               clang++               /usr/bin/clang++-"${version}"  \
+        --slave   /usr/bin/asan_symbolize        asan_symbolize        /usr/bin/asan_symbolize-"${version}" \
+        --slave   /usr/bin/c-index-test          c-index-test          /usr/bin/c-index-test-"${version}" \
+        --slave   /usr/bin/clang-check           clang-check           /usr/bin/clang-check-"${version}" \
+        --slave   /usr/bin/clang-cl              clang-cl              /usr/bin/clang-cl-"${version}" \
+        --slave   /usr/bin/clang-cpp             clang-cpp             /usr/bin/clang-cpp-"${version}" \
+        --slave   /usr/bin/clang-format          clang-format          /usr/bin/clang-format-"${version}" \
+        --slave   /usr/bin/clang-format-diff     clang-format-diff     /usr/bin/clang-format-diff-"${version}" \
+        --slave   /usr/bin/clang-import-test     clang-import-test     /usr/bin/clang-import-test-"${version}" \
+        --slave   /usr/bin/clang-include-fixer   clang-include-fixer   /usr/bin/clang-include-fixer-"${version}" \
+        --slave   /usr/bin/clang-offload-bundler clang-offload-bundler /usr/bin/clang-offload-bundler-"${version}" \
+        --slave   /usr/bin/clang-query           clang-query           /usr/bin/clang-query-"${version}" \
+        --slave   /usr/bin/clang-rename          clang-rename          /usr/bin/clang-rename-"${version}" \
+        --slave   /usr/bin/clang-reorder-fields  clang-reorder-fields  /usr/bin/clang-reorder-fields-"${version}" \
+        --slave   /usr/bin/clang-tidy            clang-tidy            /usr/bin/clang-tidy-"${version}" \
+        --slave   /usr/bin/lldb                  lldb                  /usr/bin/lldb-"${version}" \
+        --slave   /usr/bin/lldb-server           lldb-server           /usr/bin/lldb-server-"${version}"
     }
 
 # register_clang_version $1 $2

@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -12,11 +13,15 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
+    # shellcheck source=/dev/null
 	. "$HOME/.bashrc"
     fi
 fi
 
 # private setting
+command_exists() {
+    command -v "$1" > /dev/null 2>&1
+}
 
 set -o vi
 
@@ -26,26 +31,26 @@ export LC_CTYPE=${LANG}
 export LC_ALL=${LANG}
 export VISUAL="nvim";
 export EDITOR="nvim"
-export proxy="http://127.0.0.1:2000"
+export PROXY="http://192.168.64.1:2000"
 
 if [ -d ~/.npm-global ]; then 
     PATH=~/.npm-global/bin:$PATH
 fi
 # proxy.sh
 if [ -f ~/.config/functions/functions.sh ]; then
-    source ~/.config/functions/functions.sh
+    . ~/.config/functions/functions.sh
 fi
 
 if [ -f ~/.config/functions/functions.sh ]; then
-    source ~/.config/functions/functions.sh
+    . ~/.config/functions/functions.sh
 fi
 if [ -f ~/.config/install/alias ]; then
-    source ~/.config/install/alias
+    . ~/.config/install/alias
 fi
 
 # golang env
 if [ -f ~/.config/install/golang.env ]; then
-    source ~/.config/install/golang.env
+    . ~/.config/install/golang.env
 fi
 if [ "$(uname -s)" == "Darwin" ]; then
     PATH="/usr/local/opt/node@12/bin:$PATH"
@@ -77,13 +82,14 @@ if [ -d "/usr/share/swift" ]; then
 fi
 # rust bin
 if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
+    . "$HOME/.cargo/env"
 fi
 
 # git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
-    source $HOME/.bash-git-prompt/gitprompt.sh
+    # shellcheck source=~/.bash-git-prompt/gitprompt.sh
+    . ~/.bash-git-prompt/gitprompt.sh
 fi
 
 # set PATH so it includes user's private bin if it exists
@@ -113,8 +119,8 @@ fi
 # fd-find
 # cargo install fd-find  or sudo apt install fd-find
 
-if [ -f ~/.fzf/bin/fzf ] && [ -f ~/.cargo/bin/fd ]; then
-    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git -E node_modules'
+if command_exists fzf && command_exists fdfind; then
+    export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git -E node_modules'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
