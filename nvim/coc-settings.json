@@ -1,204 +1,211 @@
 {
-    "diagnostic-languageserver.filetypes": {
-        "sh": "shellcheck"
-    },
-    "diagnostic-languageserver.formatFiletypes": {
-        "sh": "shfmt"
-    },
-    "diagnostic-languageserver.formatters": {
-        "shfmt": {
-            "command": "shfmt",
-            "args": ["-i", "2", "-bn", "-ci", "-sr"]
-        }
-    },
-    // "sourcekit.commandPath": "/usr/share/swift/usr/bin/sourcekit-lsp",
-    "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
-    "suggest.triggerAfterInsertEnter": false,
-    "suggest.timeout": 2000,
-    "suggest.noselect": true,
-    "suggest.detailField": "abbr",
-    "suggest.triggerCompletionWait": 100,
-    "suggest.echodocSupport": true,
-    "diagnostic.displayByAle": true,
-    "diagnostic.signOffset": 9999999,
-    "diagnostic.errorSign": "⤫",
-    "diagnostic.warningSign": "⚠",
-    "diagnostic.refreshOnInsertMode": true,
-    "diagnostic.checkCurrentLine": true,
-    "tslint.autoFixOnSave": true,
-    "prettier.eslintIntegration": true,
-    "prettier.tslintIntegration": true,
-    "prettier.stylelintIntegration": true,
-    "emmet.includeLanguages": {
-        "vue-html": "html",
-        "vue": "html",
-        "javascript": "javascriptreact"
-    },
-    "tsserver.enable": false,
-    "rust.rustfmt_path": "~/.cargo/bin/rustfmt",
-    "rust.all_features": true,
-    "rust.racer_completion": true,
-    "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
-    "python.autoComplete.addBrackets": true,
-    "eslint.filetypes": ["javascript", "javascript.jsx", "javascriptreact", "vue"],
-    "eslint.autoFix": true,
-    "eslint.autoFixOnSave": true,
-
-    "translator.toLang": "zh",
-    "translator.engines": [
-        "google",
-        "bing",
-        "youdao",
-        "haici"
-    ],
-
-    "javascript.suggestionActions.enabled": false,
-    "coc.preferences.colorSupport": true,
-
-    "coc.preferences.formatOnSaveFiletypes": [
-        "rust",
-        "dart",
-        "typescript",
-        "vue"
-    ],
-    "flutter.enabled": true,
-    "flutter.provider.hot-reload": true,
-
-    "prettier.semi": true,
-    "prettier.singleQuote": true,
-    "prettier.bracketSpacing": true,
-    "prettier.jsxBracketSameLine": false,
-    "prettier.arrowParens": "always",
-
-    "java.format.enabled": true,
-    "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
-    "java.errors.incompleteClasspath.severity": "ignore",
-
-    "snippets.ultisnips.enable": true,
-    "snippets.ultisnips.directories": [
-        "UltiSnips",
-        "gosnippets/UltiSnips"
-    ],
-    "snippets.extends": {
-        "cpp": ["c"],
-        "typescript": ["javascript"]
-    },
-    "languageserver": {
-        "dart": {
-            "command": "dart_language_server",
-            "args": [],
-            "filetypes": ["dart"],
-            "initializationOptions": {},
-            "settings": {
-                "dart": {
-                    "validation": {},
-                    "completion": {}
-                }
-            }
-        },
-        "vetur": {
-			"filetypes": ["vue"],
-			"command": "vls",
-			"configuration": {
-				"vetur.format.options.tabSize": 4
-			}
-		},
-        // // brew tap twlz0ne/homebrew-ccls && brew install ccls
-        // "ccls": {
-        //     "command": "ccls",
-        //     "filetypes": ["c", "cpp", "objc", "objcpp"],
-        //     "rootPatterns": [
-        //         ".ccls",
-        //         "compile_commands.json",
-        //         ".vim/",
-        //         ".git/",
-        //         ".hg/"
-        //     ],
-        //     "initializationOptions": {
-        //         "cache": {
-        //             "directory": "/tmp/ccls"
-        //         },
-        //         "clang": {
-        //             // make sure you have installed commandLineTools
-        //             "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
-        //             "extraArgs": [
-        //                    "-isystem",
-        //                    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
-        //                    "-I",
-        //                    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/",
-        //                    "-I",
-        //                    "/usr/include/llvm-c-10/llvm-c",
-        //                    "-I",
-        //                    "/usr/include/clang/10.0.0/include"
-        //                 ]
-        //         },
-        //         "client": {
-        //             "snippetSupport": true
-        //         }
-        //     }
-        // },
-        // yarn global add dockerfile-language-server-nodejs
-        "dockerfile": {
-            "command": "docker-langserver",
-            "filetypes": ["dockerfile"],
-            "args": ["--stdio"]
-        },
-        // // see gopls https://github.com/saibing/tools */
-        "golang": {
-            "command": "gopls",
-            "args": [],
-            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["go"]
-        },
-        // // yarn global add bash-language-server
-        // "bash": {
-        //     "command": "bash-language-server",
-        //     "args": ["start"],
-        //     "filetypes": ["sh"],
-        //     "ignoredRootPaths": ["~"]
-        // },
-        "swift": {
-            //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
-            // "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
-            "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
-            "args": [],
-            "filetypes": ["swift"],
-            "initializationOptions": {},
-            "settings": {}
-        },
-        "julia": {
-            "command": "/usr/local/bin/julia",
-            "args": [
-                "--startup-file=no",
-                "--history-file=no",
-                "-e",
-                "using LanguageServer; using Pkg; import StaticLint; import SymbolServer; env_path = dirname(Pkg.Types.Context().env.project_file); debug = false; server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\", Dict()); server.runlinter = true; run(server);"
-            ],
-            "filetypes": ["julia"]
-        },
-        "kotlin": {
-            // "command": "/Users/bantana/repos/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
-            "command": "kotlin-language-server",
-            "filetypes": ["kotlin"]
-        },
-        "haskell": {
-            "command": "haskell-language-server",
-            "args": ["--lsp"],
-            "rootPatterns": [
-                "stack.yaml",
-                "cabal.config",
-                "package.yaml"
-            ],
-            "filetypes": [
-                "hs",
-                "lhs",
-                "haskell"
-            ],
-            "initializationOptions": {
-                "languageServerHaskell": {
-                    "hlintOn": true
-                }
-            }
-        }
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
+  },
+  "diagnostic-languageserver.formatters": {
+    "shfmt": {
+      "command": "shfmt",
+      "args": ["-i", "2", "-bn", "-ci", "-sr"]
     }
+  },
+  // "sourcekit.commandPath": "/usr/share/swift/usr/bin/sourcekit-lsp",
+  // "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.timeout": 2000,
+  "suggest.noselect": true,
+  "suggest.detailField": "abbr",
+  "suggest.triggerCompletionWait": 100,
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "diagnostic.displayByAle": true,
+  "diagnostic.signOffset": 9999999,
+  "diagnostic.errorSign": "⤫",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "•",
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.checkCurrentLine": true,
+  // "tslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.stylelintIntegration": true,
+  // "emmet.includeLanguages": {
+  //   "vue-html": "html",
+  //   "vue": "html",
+  //   "javascript": "javascriptreact"
+  // },
+  // "tsserver.enable": false,
+  "rust.rustfmt_path": "~/.cargo/bin/rustfmt",
+  "rust.all_features": true,
+  "rust.racer_completion": true,
+  "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
+  // "python.autoComplete.addBrackets": true,
+  // "eslint.filetypes": [
+  //   "javascript",
+  //   "javascript.jsx",
+  //   "javascriptreact",
+  //   "vue"
+  // ],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
+  ],
+  "eslint.autoFix": true,
+  "eslint.autoFixOnSave": true,
+
+  "translator.toLang": "zh",
+  "translator.engines": ["google", "bing", "youdao", "haici"],
+
+  "javascript.suggestionActions.enabled": false,
+  "coc.preferences.colorSupport": true,
+
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rust",
+    "dart",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "css",
+    "vue",
+    "markdown"
+  ],
+  "flutter.enabled": true,
+  "flutter.provider.hot-reload": true,
+
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.bracketSpacing": true,
+  "prettier.jsxBracketSameLine": false,
+  "prettier.arrowParens": "always",
+
+  "java.format.enabled": true,
+  "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home",
+  "java.errors.incompleteClasspath.severity": "ignore",
+
+  "snippets.ultisnips.enable": true,
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "snippets.extends": {
+    "cpp": ["c"],
+    "typescript": ["javascript"]
+  },
+  "languageserver": {
+    "dart": {
+      "command": "dart_language_server",
+      "args": [],
+      "filetypes": ["dart"],
+      "initializationOptions": {},
+      "settings": {
+        "dart": {
+          "validation": {},
+          "completion": {}
+        }
+      }
+    },
+    "vetur": {
+      "filetypes": ["vue"],
+      "command": "vls",
+      "configuration": {
+        "vetur.format.options.tabSize": 4,
+        "vetur.format.defaultFormatter.html": "prettyhtml",
+        "vetur.format.defaultFormatter.css": "prettier",
+        "vetur.format.defaultFormatter.scss": "prettier",
+        "vetur.format.defaultFormatter.postcss": "prettier"
+      }
+    },
+    // // brew tap twlz0ne/homebrew-ccls && brew install ccls
+    // "ccls": {
+    //     "command": "ccls",
+    //     "filetypes": ["c", "cpp", "objc", "objcpp"],
+    //     "rootPatterns": [
+    //         ".ccls",
+    //         "compile_commands.json",
+    //         ".vim/",
+    //         ".git/",
+    //         ".hg/"
+    //     ],
+    //     "initializationOptions": {
+    //         "cache": {
+    //             "directory": "/tmp/ccls"
+    //         },
+    //         "clang": {
+    //             // make sure you have installed commandLineTools
+    //             "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
+    //             "extraArgs": [
+    //                    "-isystem",
+    //                    "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1",
+    //                    "-I",
+    //                    "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/",
+    //                    "-I",
+    //                    "/usr/include/llvm-c-10/llvm-c",
+    //                    "-I",
+    //                    "/usr/include/clang/10.0.0/include"
+    //                 ]
+    //         },
+    //         "client": {
+    //             "snippetSupport": true
+    //         }
+    //     }
+    // },
+    // yarn global add dockerfile-language-server-nodejs
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    // // see gopls https://github.com/saibing/tools */
+    "golang": {
+      "command": "gopls",
+      "args": [],
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    },
+    // // yarn global add bash-language-server
+    // "bash": {
+    //     "command": "bash-language-server",
+    //     "args": ["start"],
+    //     "filetypes": ["sh"],
+    //     "ignoredRootPaths": ["~"]
+    // },
+    "swift": {
+      //"command": "/Users/bantana/swiftsrc/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp",
+      // "command": "/usr/share/swift/usr/bin/sourcekit-lsp",
+      "command": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+      "args": [],
+      "filetypes": ["swift"],
+      "initializationOptions": {},
+      "settings": {}
+    },
+    "julia": {
+      "command": "/usr/local/bin/julia",
+      "args": [
+        "--startup-file=no",
+        "--history-file=no",
+        "-e",
+        "using LanguageServer; using Pkg; import StaticLint; import SymbolServer; env_path = dirname(Pkg.Types.Context().env.project_file); debug = false; server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\", Dict()); server.runlinter = true; run(server);"
+      ],
+      "filetypes": ["julia"]
+    },
+    "kotlin": {
+      // "command": "/Users/bantana/repos/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
+      "command": "kotlin-language-server",
+      "filetypes": ["kotlin"]
+    },
+    "haskell": {
+      "command": "haskell-language-server",
+      "args": ["--lsp"],
+      "rootPatterns": ["stack.yaml", "cabal.config", "package.yaml"],
+      "filetypes": ["hs", "lhs", "haskell"],
+      "initializationOptions": {
+        "languageServerHaskell": {
+          "hlintOn": true
+        }
+      }
+    }
+  }
 }

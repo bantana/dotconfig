@@ -134,5 +134,12 @@ if [[ -d "$HOME/.cabal/bin" ]]; then
   export PATH="$HOME/.cabal/bin:$PATH"
 fi
 
+# deno
+
+if [[ -d "$HOME/.deno" ]]; then
+  export DENO_INSTALL="/Users/bantana/.deno"
+  export PATH="$DENO_INSTALL/bin:$PATH"
+fi
+
 export GPG_TTY=$(tty)
 export PATH="/usr/local/sbin:$PATH"

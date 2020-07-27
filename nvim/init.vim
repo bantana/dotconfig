@@ -20,7 +20,7 @@ endfunction
 
 " Specify a directory for plugins ( for Neovim: ~/.config/nvim/plugged ) {{{
 call plug#begin('~/.config/nvim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rbgrouleff/bclose.vim'
@@ -65,6 +65,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'bluk/swifty-vim'
 " Plug 'bantana/swift'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 " }}}
 
@@ -181,6 +182,9 @@ let g:coc_global_extensions = [
             \ 'coc-rust-analyzer',
             \ 'coc-prettier',
             \ 'coc-sh',
+            \ 'coc-marketplace',
+            \ 'coc-tsserver',
+            \ 'coc-deno',
             \ ]
 " }}}
 
