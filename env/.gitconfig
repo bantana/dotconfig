@@ -17,64 +17,70 @@
     path = ~/.privates/github
 
 [push]
-	default = matching
+    default = matching
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
 [core]
-	excludesfile = ~/.gitignore
-	editor = nvim
+    excludesfile = ~/.gitignore
+    editor = nvim
 [grep]
-	lineNumber = true
+    lineNumber = true
 [alias]
-  s = status
-  b = branch -v
-  r = remote -v
-  t = tag -l
-  g = grep --break --heading --line-number
-  d = difftool
-  c = commit -v
-  co = checkout
-  lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
-  pb = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\""
-  db = "!git push origin :\"$(git rev-parse --abbrev-ref HEAD)\""
-  pbf = "!git push -f origin \"$(git rev-parse --abbrev-ref HEAD)\""
-  up = "!git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\""
-  pr = "pull-request"
-  hub = "browse --"
-  i = "issue"
-  ic = "issue create"
-  cis = "ci-status"
-  mt = !sh -c '_CURRENT_BRANCH=$(git symbolic-ref --short HEAD) && git checkout $1 && git merge $_CURRENT_BRANCH && git checkout $_CURRENT_BRANCH' -
-  dev = "!git checkout develop"
-  master = "!git checkout master"
-  appraise = !/Users/bantana/bin/git-appraise
-  lastid = "!git log --format="%h" -n 1"
-  issue = !/usr/local/bin/git-issue
-  ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
-  rlog = "log --reverse"
+    s = status
+    b = branch -v
+    r = remote -v
+    t = tag -l
+    g = grep --break --heading --line-number
+    d = difftool
+    c = commit -v
+    co = checkout
+    lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+    pb = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    pbw = "!git push wgteam \"$(git rev-parse --abbrev-ref HEAD)\""
+    db = "!git push origin :\"$(git rev-parse --abbrev-ref HEAD)\""
+    pbf = "!git push -f origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    up = "!git pull --rebase origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    pr = "pull-request"
+    hub = "browse --"
+    i = "issue"
+    ic = "issue create"
+    cis = "ci-status"
+    mt = !sh -c '_CURRENT_BRANCH=$(git symbolic-ref --short HEAD) && git checkout $1 && git merge $_CURRENT_BRANCH && git checkout $_CURRENT_BRANCH' -
+    dev = "!git checkout develop"
+    master = "!git checkout master"
+    appraise = !/Users/bantana/bin/git-appraise
+    lastid = "!git log --format="%h" -n 1"
+    issue = !/usr/local/bin/git-issue
+    ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+    rlog = "log --reverse"
+    unstage = reset HEAD
+    reseth = reset --hard
+    please = push --force-with-lease
+    halp = reflog --date=iso # halp is more than help
 
 [credential]
-	helper = store
+    helper = store
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [merge]
-  tool = vimdiff
-	conflictstyle = diff3
+    tool = vimdiff
+    conflictstyle = diff3
+	ff = false
 [mergetool]
-  prompt = true
+    prompt = true
 [mergetool "vimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-# [http]
-#     proxy = socks5://127.0.0.1:1080
-# [https]
-#     proxy = socks5://127.0.0.1:1080
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[http]
+    proxy = socks5://127.0.0.1:1080
+[https]
+    proxy = socks5://127.0.0.1:1080
 # [url "ssh://git@github.com"]
 # 	insteadof = https://github.com
 # [url "ssh://git@iohttps.com"]
@@ -86,4 +92,4 @@
 # 	gitProxy="ssh" for "kernel.org"
 # 	gitProxy=default-proxy ; for the rest
 [pull]
-	ff = only
+	rebase = true

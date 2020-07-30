@@ -75,6 +75,9 @@ call plug#end()
 " set background=dark
 " hi Search term=reverse cterm=reverse gui=reverse ctermfg=237
 " colorscheme codedark
+if has('termguicolors')
+  set termguicolors
+endif
 colorscheme gruvbox
 " }}}
 

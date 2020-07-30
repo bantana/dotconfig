@@ -78,7 +78,7 @@
   "flutter.enabled": true,
   "flutter.provider.hot-reload": true,
 
-  "prettier.semi": true,
+  "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.bracketSpacing": true,
   "prettier.jsxBracketSameLine": false,
