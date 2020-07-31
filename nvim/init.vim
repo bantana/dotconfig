@@ -673,7 +673,7 @@ let g:ale_linters_ignore = {'c': ['gcc']}
 "
 highlight link CocErrorSign GruvboxRed
 " nnoremap <leader>m :!swiftformat --swiftversion 5 % --quiet<cr>:bufdo :e!<cr>
-nnoremap <leader>m :!swift-format -i %<cr>:bufdo :e!<cr>
+" nnoremap <leader>m :!swift-format -i %<cr>:bufdo :e!<cr>
 au BufWritePre,FileWritePre *.swift :SwiftFormat<cr>
 
 autocmd BufNewFile,BufRead *.toml set ft=cfg

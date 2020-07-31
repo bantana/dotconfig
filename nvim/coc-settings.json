@@ -13,6 +13,7 @@
   },
   // "sourcekit.commandPath": "/usr/share/swift/usr/bin/sourcekit-lsp",
   // "sourcekit.commandPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+  "suggest.enablePreview": true,
   "suggest.triggerAfterInsertEnter": false,
   "suggest.timeout": 2000,
   "suggest.noselect": true,
