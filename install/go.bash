@@ -37,27 +37,15 @@ function InstallGo() {
     echo ">>> Found $ostypes OS ..."
     if [[ ! -d ~/sdk ]]; then
         mkdir -p ~/sdk
+        # first get golang
+        curl -s https://dl.google.com/go/go"${gover}.${ostypes,}"-amd64.tar.gz | tar xzv -C ~/sdk/ && cd ~/sdk && mv go "go${gover}" && ln -s "go${gover}" go
     fi
     if [[ -d ~/sdk/go ]]; then
         if [[ $(go version |awk '{print $3}'|awk -F "o" '{print $2}') == "$gover" ]]; then
             echo "go version $gover already"
             exit 0
         fi
-
-        # echo ">>> WARRING: found old ~/sdk/go directory! remove ..."
-
-        # rm -rf "$HOME/sdk/go"
-
-        # if [[ $? -ne 0 ]]; then
-        #     err "removing old directory ~/sdk/go failed!"
-        #     exit 1
-        # fi
-
-        # echo ">>> removed old directory ~/sdk/go success!"
     fi
-    # get golang for linux
-    # TODO: check ~/sdk/go and clean
-    # curl -s https://dl.google.com/go/go"${gover}.${ostypes,}"-amd64.tar.gz | tar xzv -C ~/sdk/
     go get golang.org/dl/go"${gover}" && go"${gover}" download && cd ~/sdk && ln -sfn go"${gover}" go
     if [[ $? -ne 0 ]]; then
         err "golang install failed!"
