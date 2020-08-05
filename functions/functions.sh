@@ -216,3 +216,16 @@ function fe() {
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
+
+function mkcert() {
+if [ $# -ne 1 ]; then
+    echo "Usage: mkcert example.com"
+    echo "will be create certs directory on $(pwd)"
+    return 1
+fi
+mkdir certs; cd certs;
+openssl req -nodes -new -x509 \
+  -keyout ${1}.key -out ${1}.crt \
+  -days 365 \
+  -subj '/CN=${1}/O=My Company Name LTD./C=US';
+}
