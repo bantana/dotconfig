@@ -28,7 +28,6 @@
   "diagnostic.infoSign": "•",
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.checkCurrentLine": true,
-  // "tslint.autoFixOnSave": true,
   "prettier.eslintIntegration": true,
   "prettier.tslintIntegration": true,
   "prettier.stylelintIntegration": true,
@@ -37,7 +36,6 @@
   //   "vue": "html",
   //   "javascript": "javascriptreact"
   // },
-  // "tsserver.enable": false,
   "rust.rustfmt_path": "~/.cargo/bin/rustfmt",
   "rust.all_features": true,
   "rust.racer_completion": true,
@@ -59,7 +57,7 @@
   "eslint.autoFixOnSave": true,
 
   "translator.toLang": "zh",
-  "translator.engines": ["google", "bing", "youdao", "haici"],
+  "translator.engines": ["google", "youdao", "haici"],
 
   "javascript.suggestionActions.enabled": false,
   "coc.preferences.colorSupport": true,

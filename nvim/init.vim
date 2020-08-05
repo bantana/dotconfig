@@ -60,12 +60,13 @@ Plug 'mattn/gist-vim'
 Plug 'rhysd/vim-clang-format'
 " Plug 'udalov/kotlin-vim'
 " Plug 'pechorin/any-jump.vim'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'bluk/swifty-vim'
 " Plug 'bantana/swift'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 " }}}
 
@@ -127,7 +128,7 @@ set wrap
 " set textwidth=110 "80-width lines is for 1995"
 let &wrapmargin=&textwidth
 set formatoptions=qrn1
-autocmd Filetype vue setlocal ts=2 sw=2 expandtab
+autocmd Filetype vue,typescript,javascript setlocal ts=2 sw=2 expandtab
 " }}}
 
 " mapleader {{{
@@ -699,3 +700,4 @@ let g:swift_version_check = 0
 " Ctrl-w + L[H|J|K]
 " }}}
 "
+" let $NVIM_COC_LOG_LEVEL='debug'

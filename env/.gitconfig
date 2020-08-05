@@ -78,9 +78,9 @@
     process = git-lfs filter-process
     required = true
 [http]
-    proxy = socks5://127.0.0.1:1080
+    proxy = http://127.0.0.1:2000
 [https]
-    proxy = socks5://127.0.0.1:1080
+    proxy = http://127.0.0.1:2000
 # [url "ssh://git@github.com"]
 # 	insteadof = https://github.com
 # [url "ssh://git@iohttps.com"]

@@ -85,3 +85,10 @@ endsnippet
 snippet envdeno "#!/usr/bin/env deno -S ..." b
 #!/usr/bin/env deno -S --allow-all
 endsnippet
+
+# jest
+snippet test "Jest test('test desc'), () => { ... }" b
+test('$1', () => {
+	$2
+})
+endsnippet
